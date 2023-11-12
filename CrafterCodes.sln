@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrafterCodes", "CrafterCodes.csproj", "{717D7FA2-AA26-4439-87FC-E2FE30B54010}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{717D7FA2-AA26-4439-87FC-E2FE30B54010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{717D7FA2-AA26-4439-87FC-E2FE30B54010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{717D7FA2-AA26-4439-87FC-E2FE30B54010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{717D7FA2-AA26-4439-87FC-E2FE30B54010}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {404FD0FC-B704-4531-A49B-C2953A99F6E6}
+	EndGlobalSection
+EndGlobal
