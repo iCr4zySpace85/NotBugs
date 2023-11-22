@@ -1,0 +1,85 @@
+﻿@using System.Security.Claims;
+@using Microsoft.AspNetCore.Mvc;
+
+@*<link rel="stylesheet" href="~/css/styleInicio.css">*@
+
+<header>
+    <nav class="navbar navbar-expand-md bg-light sticky-top border-bottom  py-3">
+        <div class="container">
+
+            <a class="navbar-brand d-md-none" href="#">
+                <svg class="bi" width="24" height="24"><use xlink:href="#aperture" /></svg>
+                <p class="fs-5 text-danger" style="color:rgb(150, 0, 0)">SportSync</p>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav flex-grow-1 justify-content-between">
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Home">
+                            <span class="fs-5 " style="color:rgb(150, 0, 0)">SportSync</span>
+                        </a>
+                    </li>
+                       
+
+                    @if (@User.FindFirstValue(ClaimTypes.Role) == "Administrador")
+                    {
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Torneos</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Coaches</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Árbitros</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Equipo</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Contabilidad</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Noticias</a></li>
+                    }
+
+                    @if (@User.FindFirstValue(ClaimTypes.Role) == "Coauch")
+                    {
+
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Equipo</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Jugadores</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Partidos</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Resultados</a></li>
+                    }
+
+                    @if (@User.FindFirstValue(ClaimTypes.Role) == "Contador")
+                    {
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Home" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Inicio</a></li>
+                        
+                    }
+                    @if (@User.FindFirstValue(ClaimTypes.Role) == "Arbitro")
+                    {
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Catalogos" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Equipos</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Catalogos" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Partidos</a></li>
+                        <li class="nav-item m-1 "><a asp-action="Index" asp-controller="Catalogos" class="nav-link p-2 btnGeneric btnInicio shadow-sm">Resultados</a></li>
+                    }
+
+                    @if (@User.FindFirstValue(ClaimTypes.Role) == null)
+                    {
+                        <li class="nav-item m-1">
+                            <a asp-action="Login" asp-controller="Home" class="nav-link p-2 btn btn-success shadow-sm " style="color:rgb(255, 255, 255)">Login</a>
+                        </li>
+                    }
+
+                    @if (@User.FindFirstValue(ClaimTypes.Role) != null)
+                    {
+                        <li class="nav-item m-1">
+                            <a asp-action="CerrarSesion" asp-controller="Home" class="nav-link p-2 btn btn-danger shadow-sm " style="color:rgb(255, 255, 255)">Cerrar Sesion</a>
+                        </li>
+                    }
+
+                        
+                    
+                        
+                    
+
+
+
+                    </ul>
+            </div>
+        </div>
+    </nav>
+</header>

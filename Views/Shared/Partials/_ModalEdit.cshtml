@@ -1,0 +1,383 @@
+﻿@using System.Security.Claims;
+@using Microsoft.AspNetCore.Mvc;
+
+
+
+@*Editar Contactos Clientes*@
+<div class="modal fade" id="modalEditContacto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header fondoEdit">
+                <h1 class="modal-title text-light fs-5" id="exampleModalLabel">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Actualizar Contacto
+                </h1>
+            </div>
+            <div class="modal-body p-4">
+                <form id="formContactosClienteEdit">
+                    <div class="row g-3">
+
+                        <input type="hidden" id="ECCusuarioId" value="@User.FindFirstValue(ClaimTypes.SerialNumber)">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="ECCnombre" class="control-label form-label fw-bold titulos">Nombre de Contacto <b class="text-danger">*</b></label>
+                                <input type="text" id="ECCnombre" name="ECCnombre" class="form-control" required maxlength="50">
+                                <div class="invalid-feedback">Por favor, escribe un nombre</div>
+                            </div>
+                        </div>
+                    
+                    
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ECCemail" class="control-label form-label fw-bold titulos">Correo Electronico <b class="text-danger">*</b></label>
+                                <input type="email" id="ECCemail" name="ECCemail" class="form-control" required maxlength="60">
+                                <div class="invalid-feedback">Por favor, escribe un correo válido</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ECCtelefono" class="control-label form-label fw-bold titulos">Numero Telefónico <b class="text-danger">*</b></label>
+                                <input type="text" class="form-control" id="ECCtelefono" name="ECCtelefono" minlength="10" maxlength="15" required>
+                                <div class="invalid-feedback">Por favor, escribe un teléfono válido</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer fondoGeneric">
+                <button type="button" class="btnGeneric btnCancelar" id="btnCancelarActualizarContacto">Cancelar</button>
+                <button type="submit" class="btnGeneric btnActivo" id="btnGuardarContacto">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Editar Partner*@
+
+<div class="modal fade" id="modalEditPartner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header fondoEdit">
+                <h1 class="modal-title text-light fs-5" id="exampleModalLabel">
+                    <i class="fa-solid fa-pen-to-square"></i> 
+                    Actualizar Partner
+                </h1>
+            </div>
+            <div class="modal-body p-4 ">
+                    <form id="formPartnerEdit">
+
+                        <div class="row g-3">
+
+                                <div class="col-md-12 ms-auto">
+                                    <div class="form-group">
+                                        <input type="hidden" id="EPusuarioId" value="@User.FindFirstValue(ClaimTypes.SerialNumber)" />
+                                        <input type="hidden" id="EPpartnerId" />
+
+                                        <label for="EPnombre" class="control-label form-label fw-bold titulos">Nombre <b class="text-danger">*</b></label>
+                                <input id="EPnombre" name="EPnombre" class="form-control" required placeholder="[Nombre o nombres del partner]" maxlength="50" />
+                                        <div class="invalid-feedback">Por favor, escribe un nombre</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 ms-auto">
+                                    <div class="form-group">
+                                        <label for="EPcorreo" class="control-label form-label fw-bold titulos">Correo Electrónico <b class="text-danger">*</b></label>
+                                <input type="email" id="EPcorreo" name="EPcorreo" class="form-control" required placeholder="[Escribe un correo electrónico no registrado]" maxlength="60" />
+                                        <div class="invalid-feedback">Por favor, escribe un correo válido</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 ms-auto">
+                                    <div class="form-group">
+                                        <label for="EPtelefono" class="control-label form-label fw-bold titulos">Numero Telefonico <b class="text-danger">*</b></label>
+                                        <input type="tel" id="EPtelefono" name="EPtelefono" class="form-control" required placeholder="[Escribe numero telefonico]" minlength="10" maxlength="15" />
+                                        <div class="invalid-feedback">Por favor, escribe un teléfono válido</div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </form>
+            </div>
+            <div class="modal-footer fondoGeneric">
+                <button type="button" class="btnGeneric btnCancelar" id="btnCancelarActualizarPartner">Cancelar</button>
+                <button type="submit" class="btnGeneric btnActivo" id="btnGuardarPartner">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Editar Cliente*@
+
+<div class="modal fade" id="modalEditCliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header fondoEdit">
+                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
+                    <i class="fa-solid fa-pen-to-square"></i> 
+                    Actualizar Cliente
+                </h1>
+            </div>
+            <div class="modal-body p-4">
+               
+                    <form id="formClienteEdit">
+                        <div class="row g-3">
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="ECnombre" class="control-label form-label fw-bold titulos">Nombre <b class="text-danger">*</b></label>
+                                <input id="ECnombre" name="ECnombre" class="form-control" required placeholder="[Nombre o nombres del usuario]" maxlength="60" />
+                                    <div class="invalid-feedback">Por favor, escribe un nombre</div>
+                                </div>
+                            </div>
+
+                        <div class="col-md-4">
+                            <input type="hidden" id="ECusuarioId" value="@User.FindFirstValue(ClaimTypes.SerialNumber)" />
+                            <div class="form-group">
+                                <label for="ECpartnerId" class="control-label form-label fw-bold titulos">Partner <b class="text-danger">*</b></label>
+                                <select id="ECpartnerId" name="ECpartnerId" class="form-control" asp-items="ViewBag.Partners" required></select>
+                                <div class="invalid-feedback">Por favor, selecciona un partner</div>
+                            </div>
+                        </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="ECversionSAP" class="control-label form-label fw-bold titulos">Version SAP <b class="text-danger">*</b></label>
+                                    <input id="ECversionSAP" name="ECversionSAP" class="form-control" required placeholder="[Primer apellido del usuario]" maxlength="10" />
+                                    <div class="invalid-feedback">Por favor, escribe una Versión SAP</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="ECversionSQL" class="control-label form-label fw-bold titulos">Version SQL <b class="text-danger">*</b></label>
+                                    <input id="ECversionSQL" name="ECversionSQL" class="form-control" required placeholder="[Segundo apellido del usuario]" maxlength="10"/>
+                                    <div class="invalid-feedback">Por favor, escribe una Versión SQL</div>
+                                </div>
+                            </div>
+                       
+                    </div>
+                    </form>
+            </div>
+            <div class="modal-footer fondoGeneric">
+                <button type="button" class="btnGeneric btnCancelar" id="btnCancelarActualizarCliente">Cancelar</button>
+                <button type="submit" class="btnGeneric btnActivo" id="btnGuardarCliente">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Editar Usuario*@
+
+<div class="modal fade" id="modalEditUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header fondoEdit">
+                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Actualizar Usuario
+                </h1>
+            </div>
+            <div class="modal-body p-4">
+
+                <form id="formEditUsuario">
+                    <div class="row g-3">
+
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="perfilId" class="control-label form-label fw-bold titulos">Tipo de Usuario <b class="text-danger">*</b></label>
+                                <select id="EdperfilId" class="form-control" asp-items="ViewBag.Roles" required></select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="departamentoId" class="control-label form-label fw-bold titulos">Departamento <b class="text-danger">*</b></label>
+                                <select id="EddepartamentoId" class="form-control" asp-items="ViewBag.Departamentos" required></select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    
+                   
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="nombre" class="control-label form-label fw-bold titulos">Nombre <b class="text-danger">*</b></label>
+                                <input id="Ednombre" class="form-control" required placeholder="[Nombre o nombres del usuario]" maxlength="50" />
+                                <div class="invalid-feedback">Por favor, escribe un nombre</div>
+                            </div>
+                        </div>
+                        @*<input id="userid" value="@usuario.UsuarioId" type="hidden" required />*@
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="apPaterno" class="control-label form-label fw-bold titulos">Apellido Paterno <b class="text-danger">*</b></label>
+                                <input id="EdapPaterno" class="form-control" required placeholder="[Primer apellido del usuario]" maxlength="50"/>
+                                <div class="invalid-feedback">Por favor, escribe un apellido paterno</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="apMaterno" class="control-label form-label fw-bold titulos">Apellido Materno <b class="text-danger">*</b></label>
+                                <input id="EdapMaterno" class="form-control" required placeholder="[Segundo apellido del usuario]" maxlength="50"/>
+                                <div class="invalid-feedback">Por favor, escribe un  apellido materno</div>
+                            </div>
+                        </div>
+
+                    
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+
+                            <div class="list-group">
+                                <label class="list-group-item d-flex gap-2">
+                                    <input id="check" class="form-check-input mt-2" type="checkbox" />
+                                    <span class="">
+                                        Activar
+                                        <small class="d-block text-body-secondary">Permitir que el usuario este activo en el sistema</small>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-3"></div>
+
+                    
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer fondoGeneric">
+                <button type="button" class="btnGeneric btnCancelar" id="btnCancelarActualizarUsuario">Cancelar</button>
+                <button type="submit" class="btnGeneric btnActivo" id="btnGuardarUsuario">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Editar Producto*@
+
+<div class="modal fade" id="modalEditProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header fondoEdit">
+                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Actualizar Producto
+                </h1>
+            </div>
+            <div class="modal-body p-4">
+
+                <form id="fromEditProduc">
+                    <div class="row g-3">
+
+                        <input type="hidden" id="EPRusuarioId" value="@User.FindFirstValue(ClaimTypes.SerialNumber)">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="EPRnombre" class="control-label form-label fw-bold titulos">Nombre Producto<b class="text-danger">*</b></label>
+                                <input type="text" id="EPRnombre" class="form-control" required maxlength="30">
+                                <div class="invalid-feedback">Por favor, escribe un nombre</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="EPRdescripcion" class="visually-hidden">Descripción</label>
+                                <textarea class="form-control" id="EPRdescripcion" placeholder="Descripción" required maxlength="300"></textarea>
+                                <div class="invalid-feedback">Por favor, escribe un nombre</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer fondoGeneric">
+                <button type="button" class="btnGeneric btnCancelar" id="btnCancelarActualizarProducto">Cancelar</button>
+                <button type="submit" class="btnGeneric btnActivo" id="btnGuardarProducto">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Activación de Credenciales*@
+
+@using (Html.BeginForm("ActivarCredenciales", "Catalogos", FormMethod.Post))
+{
+
+    <div class="modal fade" id="credenciales" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content ">
+                <div class="modal-header fondoEdit">
+                    <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
+                        <i class="fa-regular fa-circle-check"></i>
+                        Activación de Credenciales
+                    </h1>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="ACRclienteId" name="ACRclienteId" />
+                    <div class="table-responsive">
+                        <table class="table table-striped text-center align-middle table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tipo de Credencial</th>
+                                    <th scope="col">Usuario</th>
+                                    <th scope="col">Contraseña</th>
+                                    <th scope="col">Activar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="TCredencial">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer fondoGeneric">
+                    <button type="button" class="btnGeneric btnCancelar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btnGeneric btnActivo">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@*Activación de Conexiones*@
+
+@using (Html.BeginForm("ActivarConexiones", "Catalogos", FormMethod.Post))
+{
+
+    <div class="modal fade" id="conexiones" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header fondoEdit">
+                    <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
+                        <i class="fa-regular fa-circle-check"></i>
+                        Activación de Conexiones
+                    </h1>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="ACclienteId" name="ACclienteId" />
+                    <div class="table-responsive">
+                        <table class="table table-striped text-center align-middle table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tipo de Conexion</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Activar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="TConexion">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer fondoGeneric">
+                    <button type="button" class="btnGeneric btnCancelar" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btnGeneric btnActivo">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

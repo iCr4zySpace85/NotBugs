@@ -1,0 +1,9 @@
+﻿:root {
+    --colorGenric: rgb(150, 0, 0);
+    --colorDanger: rgba(232,0,0,.8);
+    --color-btn-succes: rgba(254, 179, 0,.8);
+    --colorText: #fff;
+    --color-btn-cancel: #475863;
+    --color-fondo-Generic: #F2F2F2;
+    --color-border-Generic: #d8d8d8;
+}

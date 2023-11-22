@@ -1,0 +1,22 @@
+﻿@import "colors.css";
+@import "styleGeneral.css";
+@import "styleFormRequerimientos.css";
+
+.headerTabla {
+    background-color: var(--colorGenric);
+    color: var(--colorText);
+}
+
+.btnContact{
+    background-color: var(--color-btn-cancel);
+    color: var(--colorText);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+    .btnContact:hover {
+        color: var(--colorText);
+    }
+
+
+

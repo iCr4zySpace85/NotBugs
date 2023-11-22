@@ -1,0 +1,61 @@
+@import "styleGeneral.css";
+@import "colors.css";
+  
+.contador{
+    background-color: var(--colorGenric);
+}  
+/* Pestaña de secciones */
+    
+.nav-link{
+    color: var(--color-btn-cancel);
+}
+    
+.nav-link.active{
+    border-color: var(--colorGenric) var(--colorGenric) var(--colorText) !important;
+    color: var(--colorGenric) !important;
+}
+    
+.nav-tabs{   
+    border-color:var(--colorGenric) !important;
+ }
+
+/* Fondos de elementos */
+
+.fondoAlerta{
+    background-color: rgba(2, 99, 158,.88);
+    color: var(--colorText);
+}
+
+.coment {
+    border: 1px solid var(--colorGenric);
+    border-radius: .5em;
+}
+
+/* Botones */
+    
+.btnConexiones{
+    border: 1px solid var(--colorGenric);
+    color: var(--colorGenric);
+    text-decoration: none;
+    background-color: transparent;
+}
+
+    .btnConexiones:hover {
+        background-color: var(--colorGenric);
+        text-decoration: none;
+        color: var(--colorText);
+    }
+
+
+
+@media(min-widht: 768px){
+    .btnConexiones{
+        padding: .4em 3em;
+    }
+}
+    
+@media (max-width: 768px) {
+    .btn-label {
+        display: none;
+    }
+}

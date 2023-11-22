@@ -1,0 +1,33 @@
+﻿@import "styleGeneral.css";
+@import "colors.css";
+
+.tarjetNull {
+    border: 2px solid var(--colorDanger);
+}
+
+.tarjet {
+    border: 1px solid var(--colorGenric);
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjet .contenido{
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.tarjet-titulo{
+    color: var(--colorGenric);
+    font-size: 1.8em;
+}
+
+.tarjet-subtitulo {
+    color: var(--color-btn-succes);
+    font-size: 1.2em;
+}
+
+.countLink {
+    background-color: var(--colorGenric);
+    color: var(--colorText);
+}
+

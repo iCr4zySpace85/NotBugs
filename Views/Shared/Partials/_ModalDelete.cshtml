@@ -1,0 +1,22 @@
+﻿@using System.Security.Claims;
+@using Microsoft.AspNetCore.Mvc;
+
+
+<link rel="stylesheet" href="~/css/styleFormRequerimientos.css">
+
+<div class="modal fade" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content text-center ">
+            <div class="modal-header bg-danger">
+                <h2 class="modal-title fs-5 text-light" id="exampleModalLabel"><i class="fa-solid fa-trash"></i> Eliminar Registro</h2>
+            </div>
+            <div class="modal-body">
+                <p class="m-0">¿Estás seguro de eliminar este registro?</p>
+            </div>
+            <div class="modal-footer fondoGeneric">
+                <button type="button" class="btnGeneric btnCancelar" id="btnCancelarEliminar">Cancelar</button>
+                <button type="submit" class="btnGeneric btnLogout" id="eliminar">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>

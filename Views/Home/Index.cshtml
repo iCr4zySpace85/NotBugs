@@ -1,8 +1,50 @@
-﻿@{
+﻿@using System.Security.Claims;
+@using Microsoft.AspNetCore.Mvc;
+@{
     ViewData["Title"] = "Home Page";
 }
+<div class="container text-center">
+    <div class="row align-items-start">
+        
+        <div class="col-8">
+            @for (int i = 1; i < 11; i++)
+{
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+                <br>
+
+                <div class="card border-secondary col-12" style="max-width:auto;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://play-lh.googleusercontent.com/NdPvImG_Iv40m61BqoNXLsRKKGF0tOkOf8e-ko2XisdsIRyC_nJqBQsRU3Ni4JlcaQ=w240-h480-rw" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body  text-secondary">
+                                <h5 class="card-title">Torneo @i</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+            }
+        </div>
+        <div class="col-4">
+            @for (int i = 1; i < 7; i++)
+            {
+                <br>
+                <div class="card border-secondary " style="width: auto;">
+                    <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/sa419ec3aee5a5822/image/i772a5ecdcb2b16a3/version/1489435207/image.png" class="card-img-top" alt="...">
+                    <div class="card-body text-secondary">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 </div>
+
