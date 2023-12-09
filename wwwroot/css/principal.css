@@ -1,0 +1,135 @@
+ /* Estilos para alinear elementos */
+
+ @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap");
+
+ body {
+   background-color: #d81717ee;
+   font-family: "Quicksand", sans-serif;
+   color: white;
+ }
+
+ .imgP {
+   width: 120px;
+ }
+ .icono {
+   margin-right: 10px; /* Espacio entre el icono y el título */
+ }
+
+ .title {
+   font-size: 35px;
+   margin-right: auto; /* Empuja el título hacia la izquierda */
+ }
+
+ .login-btn {
+   margin-left: 10px; /* Espacio entre el título y el botón */
+ }
+
+ button {
+   font-size: 16px;
+   position: relative;
+   padding: 1em 2.5em 1em 2.5em;
+   border: none;
+   background: #fff;
+   transition: all 0.1s linear;
+   box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+ }
+
+ button:active {
+   transform: scale(0.95);
+ }
+
+ button span {
+   color: #464646;
+ }
+
+ button .border {
+   position: absolute;
+   border: 0.15em solid #fff;
+   transition: all 0.3s 0.08s linear;
+   top: 50%;
+   left: 50%;
+   width: 7em;
+   height: 3em;
+   transform: translate(-50%, -50%);
+ }
+
+ button:hover .border {
+   display: block;
+   width: 7.9em;
+   height: 3.7em;
+ }
+
+ .full-rounded {
+   border-radius: 2em;
+ }
+
+ .group {
+   display: flex;
+   line-height: 28px;
+   align-items: center;
+   position: relative;
+   max-width: 190px;
+ }
+
+ .group {
+   display: flex;
+   line-height: 28px;
+   align-items: center;
+   position: relative;
+   max-width: 190px;
+ }
+
+ .custom-input {
+   width: 100vh;
+   height: 40px;
+   line-height: 28px;
+   padding: 0 1rem;
+   padding-left: 2.5rem;
+   border: 2px solid transparent;
+   border-radius: 8px;
+   outline: none;
+   background-color: #f3f3f4;
+   color: #0d0c22;
+   transition: 0.3s ease;
+ }
+
+ .custom-input::placeholder {
+   color: #9e9ea7;
+ }
+
+ .custom-input:focus,
+ .custom-input:hover {
+   outline: none;
+   border-color: rgba(234, 76, 137, 0.4);
+   background-color: #fff;
+   box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+ }
+
+ .icon {
+   position: absolute;
+   left: 1rem;
+   fill: #9e9ea7;
+   width: 1rem;
+   height: 1rem;
+ }
+
+ .contl {
+   display: flex;
+   width: 100%;
+   height: 100vh;
+ }
+
+ .seccion {
+   padding: 20px;
+   margin: 0px;
+   flex-grow: 1;
+ }
+ .apartado1 {
+   flex-basis: 70%; 
+ }
+
+ .apartado2 {
+   flex-basis: 30%; 
+    
+ }
+ 

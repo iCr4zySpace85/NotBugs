@@ -1,6 +1,10 @@
 @import "styleGeneral.css";
 @import "colors.css";
-  
+ 
+
+footer{
+    margin-top: 100%;
+}
 .contador{
     background-color: var(--colorGenric);
 }  
@@ -48,14 +52,4 @@
 
 
 
-@media(min-widht: 768px){
-    .btnConexiones{
-        padding: .4em 3em;
-    }
-}
-    
-@media (max-width: 768px) {
-    .btn-label {
-        display: none;
-    }
-}
+ 
