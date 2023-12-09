@@ -4,12 +4,11 @@ using CrafterCodes.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Diagnostics;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+
 
 namespace CrafterCodes.Controllers
 {
@@ -48,7 +47,17 @@ namespace CrafterCodes.Controllers
         
         public IActionResult Index()
         {
-            return View();
+            var menuManager = new MenuManager();
+            string? userRole = @User.FindFirstValue(ClaimTypes.Role);
+            List<string> userMenu = menuManager.GetMenuForUserRole(userRole);
+
+            var viewModel = new MenuViewModel
+            {
+                UserMenu = userMenu
+            };
+
+            return View(viewModel);
+            // return View();
         }
 
         public IActionResult Login()
