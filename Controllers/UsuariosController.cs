@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography; // Para MD5
+using System.Text; // Para Encoding
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -43,20 +45,22 @@ namespace CrafterCodes.Controllers
         }
 
         // GET: Usuario/Create
+        
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuario/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdPersonal,Nombre,ApellidoPaterno,ApellidoMaterno,IdRol,Correo,Contraseña")] Usuarios usuario)
+         public async Task<IActionResult> Create([Bind("IdPersonal,Nombre,ApellidoPaterno,ApellidoMaterno,IdRol,Correo,Contraseña")] Usuarios usuario)
         {
             if (ModelState.IsValid)
             {
+                // Encriptar la contraseña antes de guardarla
+                usuario.Contraseña = GetMd5Hash(usuario.Contraseña);
+                
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,9 +84,6 @@ namespace CrafterCodes.Controllers
             return View(usuario);
         }
 
-        // POST: Usuario/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdPersonal,Nombre,ApellidoPaterno,ApellidoMaterno,IdRol,Correo,Contraseña")] Usuarios usuario)
@@ -96,6 +97,9 @@ namespace CrafterCodes.Controllers
             {
                 try
                 {
+                    // Encriptar la contraseña antes de guardarla
+                    usuario.Contraseña = GetMd5Hash(usuario.Contraseña);
+
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
@@ -114,8 +118,6 @@ namespace CrafterCodes.Controllers
             }
             return View(usuario);
         }
-
-        // GET: Usuario/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +135,6 @@ namespace CrafterCodes.Controllers
             return View(usuario);
         }
 
-        // POST: Usuario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -147,6 +148,28 @@ namespace CrafterCodes.Controllers
         private bool UsuarioExists(int id)
         {
             return _context.Usuarios.Any(e => e.IdPersonal == id);
+        }
+        // Método para encriptar la contraseña usando MD5
+        private string GetMd5Hash(string input)
+        {
+            // Crear una instancia del algoritmo MD5
+            using (MD5 md5Hash = MD5.Create())
+            {
+                // Convertir la cadena de entrada a un array de bytes y calcular el hash
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                // Crear una cadena para almacenar el hash en formato hexadecimal
+                StringBuilder sBuilder = new StringBuilder();
+
+                // Convertir cada byte del hash en su representación hexadecimal
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("x2"));
+                }
+
+                // Devolver el hash en formato hexadecimal
+                return sBuilder.ToString();
+            }
         }
     }
 }

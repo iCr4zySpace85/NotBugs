@@ -8,6 +8,10 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Diagnostics;
 using System.Security.Claims;
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 
 namespace CrafterCodes.Controllers
@@ -59,20 +63,6 @@ namespace CrafterCodes.Controllers
             return View(viewModel);
             // return View();
         }
-
-        public IActionResult Login()
-        {
-            ClaimsPrincipal c = HttpContext.User;
-            if (c.Identity != null)
-            {
-                if (c.Identity.IsAuthenticated)
-                    return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
-        [HttpPost]
-
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
@@ -86,7 +76,7 @@ namespace CrafterCodes.Controllers
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@correo", model.Username);
-                        cmd.Parameters.AddWithValue("@contraseña", model.Pass);
+                        cmd.Parameters.AddWithValue("@contraseña", GetMd5Hash(model.Pass)); // Encriptar la contraseña antes de buscarla en la base de datos
                         con.Open();
                         try
                         {
@@ -94,7 +84,7 @@ namespace CrafterCodes.Controllers
                             {
                                 if (dr.Read())
                                 {
-                                    
+                                    // Tu código de autenticación aquí
                                     int idUsuario = (int)dr["idPersonal"];
                                     string? name = (string)dr["nombre"];
                                     string? ap = (string)dr["apellidoPaterno"];
@@ -103,30 +93,40 @@ namespace CrafterCodes.Controllers
 
                                     if (name != null)
                                     {
+                                        // Crear las reclamaciones del usuario para la autenticación
                                         var claims = new List<Claim>()
-                                                {
-                                                    new Claim(ClaimTypes.NameIdentifier, name),
-                                                    new Claim(ClaimTypes.Name, nombreCompleto),
-                                                    new Claim(ClaimTypes.SerialNumber, idUsuario.ToString())
-                                                };
+                                            {
+                                                new Claim(ClaimTypes.NameIdentifier, name),
+                                                new Claim(ClaimTypes.Name, nombreCompleto),
+                                                new Claim(ClaimTypes.SerialNumber, idUsuario.ToString())
+                                            };
 
+                                        // Obtener el rol del usuario de la base de datos
                                         int perfilId = (int)dr["idRol"];
                                         string perfilNombre = (string)dr["nombreRol"];
                                         claims.Add(new Claim(ClaimTypes.Role, perfilNombre));
 
-                                        var identify = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                                        var propiedades = new AuthenticationProperties
+                                        // Crear la identidad del usuario con las reclamaciones
+                                        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                                        // Configurar las propiedades de autenticación
+                                        var authenticationProperties = new AuthenticationProperties
                                         {
                                             AllowRefresh = true,
                                             IsPersistent = true,
-                                            ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromHours(1)),
+                                            ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromHours(1))
                                         };
 
-                                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identify), propiedades);
+                                        // Iniciar sesión del usuario
+                                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), authenticationProperties);
 
-                                        return RedirectToAction("Login", "Home");
+                                        // Redireccionar al usuario a la página de inicio
+                                        return RedirectToAction("Index", "Home");
                                     }
-
+                                    else
+                                    {
+                                        ViewBag.Error = "Usuario no registrado";
+                                    }
                                 }
                                 else
                                 {
@@ -148,6 +148,24 @@ namespace CrafterCodes.Controllers
                 ViewBag.Error = ex.Message;
             }
             return View("Login");
+        }
+
+        // Método para encriptar la contraseña usando MD5
+        private string GetMd5Hash(string input)
+        {
+            using (MD5 md5Hash = MD5.Create())
+            {
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                StringBuilder sBuilder = new StringBuilder();
+
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("x2"));
+                }
+
+                return sBuilder.ToString();
+            }
         }
 
         public async Task<IActionResult> CerrarSesion()

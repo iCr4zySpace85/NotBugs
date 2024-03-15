@@ -15,7 +15,7 @@ INSERT INTO Roles (idRol, nombreRol) VALUES
 
 -- Crear la tabla Personal
 CREATE TABLE Usuarios (
-    idUsuarios INT PRIMARY KEY,
+    idUsuarios INT PRIMARY KEY auto increment ,
     nombre VARCHAR(50) NOT NULL,
     apellidoPaterno VARCHAR(50) NOT NULL,
     apellidoMaterno VARCHAR(50) NOT NULL,
@@ -24,6 +24,8 @@ CREATE TABLE Usuarios (
     contraseña VARCHAR(100) NOT NULL,
     CONSTRAINT FK_Personal_Roles FOREIGN KEY (idRol) REFERENCES Roles(idRol)
 );
+ALTER TABLE Usuarios
+ALTER COLUMN idPersonal INT IDENTITY(1,1) PRIMARY KEY;
 
 -- Insertar algunos registros de ejemplo en la tabla Personal
 INSERT INTO Usuarios (idUsuarios, nombre, apellidoPaterno, apellidoMaterno, idRol, correo, contraseña) VALUES
@@ -52,3 +54,27 @@ BEGIN
     WHERE
         U.correo = @correo AND U.contraseña = @contraseña;
 END;
+
+-- Paso 1: Crear una nueva tabla temporal con la estructura deseada
+CREATE TABLE TempUsuarios (
+    idPersonal INT IDENTITY(1,1) PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellidoPaterno VARCHAR(50) NOT NULL,
+    apellidoMaterno VARCHAR(50) NOT NULL,
+    idRol INT,
+    correo VARCHAR(100) NOT NULL,
+    contraseña VARCHAR(100) NOT NULL,
+    CONSTRAINT FK_Usuarios_Roles FOREIGN KEY (idRol) REFERENCES Roles(idRol)
+);
+
+-- Paso 2: Insertar los datos de la tabla original en la nueva tabla temporal
+INSERT INTO TempUsuarios (nombre, apellidoPaterno, apellidoMaterno, idRol, correo, contraseña)
+SELECT nombre, apellidoPaterno, apellidoMaterno, idRol, correo, contraseña
+FROM Usuarios;
+
+-- Paso 3: Eliminar la tabla original
+DROP TABLE Usuarios;
+DROP TABLE TempUsuarios;
+
+-- Paso 4: Renombrar la nueva tabla temporal como la tabla original
+EXEC sp_rename 'TempUsuarios', 'Usuarios';
