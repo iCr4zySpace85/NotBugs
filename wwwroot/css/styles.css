@@ -1,0 +1,48 @@
+.nav-card {
+  background: #ffffff;
+  padding: 1.5em;
+  border: 0 solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.875rem 0 rgba(33, 37, 41, 0.05);
+}
+
+.card-link {
+  color: black;
+  cursor: pointer;
+  display: block;
+  font-weight: 200;
+  position: relative;
+  text-decoration: none;
+  font-size: large;
+}
+
+.form-control:focus {
+  border-color: #1a203b;
+  box-shadow: none;
+}
+.form-control {
+  border-color: rgba(0, 0, 0, 0.178);
+  box-shadow: none;
+}
+.form-select:focus {
+  border-color: #1a203b;
+  box-shadow: none;
+}
+.form-select {
+  border-color: rgba(0, 0, 0, 0.178);
+  box-shadow: none;
+}
+
+.form-search {
+  padding-top: 3em;
+  padding-inline: 10em;
+}
+.form-xx {
+  padding: 0.8em;
+}
+.shadown-card {
+  box-shadow: 0 0 0.875rem 0 rgba(33, 37, 41, 0.313);
+}
+.card-body {
+  min-width: 90%;
+}

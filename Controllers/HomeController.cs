@@ -49,23 +49,37 @@ namespace CrafterCodes.Controllers
                 return View(model);
             }
         }*/
-        
-        public IActionResult Index()
-        {
-            var menuManager = new MenuManager();
-            string? userRole = @User.FindFirstValue(ClaimTypes.Role);
-            List<string> userMenu = menuManager.GetMenuForUserRole(userRole);
 
-            var viewModel = new MenuViewModel
-            {
-                UserMenu = userMenu
-            };
+        // public IActionResult Index()
+        // {
+        //     var menuManager = new MenuManager();
+        //     string? userRole = @User.FindFirstValue(ClaimTypes.Role);
+        //     List<string> userMenu = menuManager.GetMenuForUserRole(userRole);
 
-            return View(viewModel);
-            // return View();
-        }
+        //     var viewModel = new MenuViewModel
+        //     {
+        //         UserMenu = userMenu
+        //     };
+
+        //     return View(viewModel);
+        //     // return View();
+        // }
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var userRole = User.FindFirstValue(ClaimTypes.Role);
+                switch (userRole)  // Asumiendo que el nombre del rol es un string significativo
+                {
+                    case "Organizador":
+                        return RedirectToAction("Index", "Organizador");
+
+                    case "Coach":
+                        return RedirectToAction("Index", "Coach");
+                    default:
+                        return RedirectToAction("Login", "Home");
+                }
+            }
             if (!ModelState.IsValid)
                 return View("Login");
 
@@ -120,9 +134,17 @@ namespace CrafterCodes.Controllers
 
                                         // Iniciar sesión del usuario
                                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), authenticationProperties);
+                                        // Redirección basada en el rol del usuario
+                                        switch (perfilNombre.ToString())  // Asumiendo que el nombre del rol es un string significativo
+                                        {
+                                            case "Organizador":
+                                                return RedirectToAction("Index", "Organizador");
 
-                                        // Redireccionar al usuario a la página de inicio
-                                        return RedirectToAction("Index", "Home");
+                                            case "Coach":
+                                                return RedirectToAction("Index", "Coach");    
+                                            default:
+                                                return RedirectToAction("Index", "Home");
+                                        }
                                     }
                                     else
                                     {
@@ -172,7 +194,7 @@ namespace CrafterCodes.Controllers
         public async Task<IActionResult> CerrarSesion()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Home");
         }
 
         public IActionResult Privacy()
@@ -541,7 +563,7 @@ namespace CrafterCodes.Controllers
                 ActualizarContraseñaUsuario(idUsuario, contraseñaEncriptada);
 
                 // Después de cambiar la contraseña, puedes redirigir al usuario a una página de inicio de sesión u otra página relevante
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Home");
             }
             catch (Exception ex)
             {
