@@ -16,11 +16,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CrafterCodes.Controllers
 {
+    [Authorize(Roles = "Organizador")]// Esto requiere autenticación para todas las acciones en este controlador
     public class OrganizadorController : Controller
     {
-
         private readonly ILogger<HomeController> _logger;
-        
         private readonly Contexto _contexto;
         private readonly ApplicationDbContext _context;
 
@@ -29,11 +28,10 @@ namespace CrafterCodes.Controllers
             _logger = logger;
             _contexto = contexto;
         }
+
         public IActionResult Index()
         {
-            
             return View();
         }
-
     }
 }

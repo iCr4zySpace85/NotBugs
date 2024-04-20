@@ -99,7 +99,7 @@ namespace CrafterCodes.Controllers
                             {
                                 if (dr.Read())
                                 {
-                                    // Tu código de autenticación aquí
+                                    
                                     int idUsuario = (int)dr["idPersonal"];
                                     string? name = (string)dr["nombre"];
                                     string? ap = (string)dr["apellidoPaterno"];
@@ -134,6 +134,9 @@ namespace CrafterCodes.Controllers
 
                                         // Iniciar sesión del usuario
                                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), authenticationProperties);
+                                        
+                                        // Guardar el nombre del usuario en ViewBag
+                                        TempData["NombreUsuario"] = nombreCompleto;
                                         // Redirección basada en el rol del usuario
                                         switch (perfilNombre.ToString())  // Asumiendo que el nombre del rol es un string significativo
                                         {

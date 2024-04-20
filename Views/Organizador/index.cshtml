@@ -124,7 +124,10 @@
                     class="avatar img-fluid rounded me-1"
                     alt="Charles Hall"
                   />
-                  <span class="text-dark">AlexanderLR</span>
+                @if (User.Identity.IsAuthenticated && TempData["NombreUsuario"] != null)
+                {
+                  <span class="text-dark">@TempData["NombreUsuario"].ToString()</span>
+                }
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <div class="dropdown-divider"></div>

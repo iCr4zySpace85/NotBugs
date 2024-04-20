@@ -8,9 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CrafterCodes.Models;
-
+using Microsoft.AspNetCore.Authorization;
 namespace CrafterCodes.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class UsuariosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -100,6 +101,7 @@ namespace CrafterCodes.Controllers
             {
                 try
                 {
+                    // Encriptar la contraseña antes de guardarla
                     usuarios.Contraseña = GetMd5Hash(usuarios.Contraseña);
                     _context.Update(usuarios);
                     await _context.SaveChangesAsync();
