@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CrafterCodes.Controllers
 {
-    [Authorize(Roles = "Organizador")]// Esto requiere autenticación para todas las acciones en este controlador
+    [Authorize(Roles = "Organizador, Administrador")]// Esto requiere autenticación para todas las acciones en este controlador
     public class OrganizadorController : Controller
     {
         private readonly ILogger<HomeController> _logger;

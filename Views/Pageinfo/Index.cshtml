@@ -1,0 +1,85 @@
+@* Modelo declarado aquí *@
+    @model CrafterCodes.Models.ViewModels.PageInfoViewModel
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contenedores Flexibles</title>
+    <link rel="stylesheet" href="~/css/index.css" />
+    <link rel="stylesheet" href="~/css/normalize.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">
+          <img src="~/img/logo.PNG" alt="Logo" />
+        </a>
+      </div>
+
+      <button class="menu-btn">&#9776;</button>
+
+      <div class="menu" id="menu">
+        <a href="#">Inicio</a>
+        <a href="#">Futbol</a>
+        <a href="#">Basquetball</a>
+        <a href="#">Volleyball</a>
+      </div>
+    </nav>
+    
+    <!--  Conmtenedor 1 -->
+    
+
+  <div class="contenedor-80">
+    <div class="contenedor-tarjetas">
+      @foreach (var torneo in Model.Torneos)
+      {
+        <div class="tarjeta">
+          <div class="imagen">
+            <img src="@Url.Content(torneo.IMG_torneo)" alt="Imagen del torneo" />
+          </div>
+          <div class="informacion">
+            <p>Nombre del torneo: <input type="text" placeholder="Nombre del torneo" value="@torneo.Nombre" readonly />
+            </p>
+            <p>Deporte: <input type="text" placeholder="Deporte" value="@torneo.Deporte.Nombre" readonly /></p>
+            <p>Categoría: <input type="text" placeholder="Categoría" value="@torneo.Categoria" readonly /></p>
+            <p>Temporada: <input type="text" placeholder="Temporada" value="@torneo.Fecha_inicio.Year.ToString()"
+                readonly /></p>
+            <a href="@Url.Action("Torneos", "Pageinfo", new { id = torneo.ID_torneo })" class="btn-mas-informacion">Más
+              Información</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+     <!-- CONTENEDOR 2 -->
+
+    <div class="contenedor-20">
+    @foreach (var noticia in Model.Noticias)
+    {
+        <div class="noticia">
+            <div class="imagen-noticia">
+                <img src="~/img/img4.jpeg" alt="Imagen de la noticia" />
+            </div>
+            <div class="contenido-noticia">
+                <h3>@noticia.Titulo</h3>
+                <p>@noticia.Contenido</p>
+                <a href="@Url.Action("DetalleNoticia", new { id = noticia.ID_noticia })" class="btn-mas-informacion">Más Información</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+    <script>
+      const menuBtn = document.querySelector(".menu-btn");
+      const menu = document.getElementById("menu");
+
+      menuBtn.addEventListener("click", function () {
+        const isMenuVisible = menu.style.display === "block";
+        menu.style.display = isMenuVisible ? "none" : "block";
+      });
+    </script>
+  </body>
+</html>

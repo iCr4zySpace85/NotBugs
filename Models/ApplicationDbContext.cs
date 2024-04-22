@@ -9,5 +9,7 @@ namespace CrafterCodes.Models
         public DbSet<Roles> Roles { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public DbSet<Torneos> Torneos { get; set; }
+        public DbSet<Deporte> Deportes { get; set; }
     }
 }
