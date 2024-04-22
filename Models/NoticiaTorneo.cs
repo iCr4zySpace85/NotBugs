@@ -4,6 +4,7 @@ namespace CrafterCodes.Models
 {
     public class NoticiaTorneo
 {
+    [Key]
     public int ID_noticia_torneo { get; set; }
     public int ID_noticia { get; set; }
     public int ID_torneo { get; set; }
