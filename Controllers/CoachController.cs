@@ -30,9 +30,18 @@ namespace CrafterCodes.Controllers
             _logger = logger;
             _contexto = contexto;
         }
-        public IActionResult Index()
+        public IActionResult index()
         {
-            
+            return View();
+        }
+        
+        public IActionResult panelEquipoCoach()
+        {
+            return View();
+        }
+        
+        public IActionResult partidosEquipo()
+        {
             return View();
         }
 

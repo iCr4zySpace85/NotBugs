@@ -1,3 +1,11 @@
+@{
+    ViewData["Title"] = "SportSyncSoftware Organizador";
+}
+
+@{
+    Layout = null;
+}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,9 +18,9 @@
 
     <title>Torneos | SportSync</title>
 
-    <link href="../css/app.css" rel="stylesheet" />
-    <link href="../css/sidebar.css" rel="stylesheet" />
-    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="~/css/app.css" rel="stylesheet" />
+    <link href="~/css/sidebar.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
@@ -33,7 +41,7 @@
             <div class="text-center">
               <div class="text-center">
                 <img
-                  src="../img/logo-sportsync.png"
+                  src="~/img/logo-sportsync.png"
                   class="img-fluid"
                   width="180"
                 />
@@ -45,42 +53,42 @@
             <li class="sidebar-header">Paginas</li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="../index.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="Index">
                 <i class="align-middle" data-feather="sliders"></i>
                 <span class="align-middle">Torneos</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="../coaches.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="coaches">
                 <i class="align-middle" data-feather="user"></i>
                 <span class="align-middle">Coaches</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="../arbitros.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="arbitros">
                 <i class="align-middle" data-feather="user-check"></i>
                 <span class="align-middle">Arbitros</span>
               </a>
             </li>
 
             <li class="sidebar-item active">
-              <a class="sidebar-link" href="../equipos.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="equipo">
                 <i class="align-middle" data-feather="users"></i>
                 <span class="align-middle">Equipos</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="../contabilidad.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="contabilidad">
                 <i class="align-middle" data-feather="dollar-sign"></i>
                 <span class="align-middle">Contabilidad</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="../noticias.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="noticias">
                 <i class="align-middle" data-feather="book"></i>
                 <span class="align-middle">Noticias</span>
               </a>
@@ -100,11 +108,11 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-icon dropdown-toggle d-inline-block d-sm-none"
-                  href="#"
+                  
                   data-bs-toggle="dropdown"
                 >
                   <img
-                    src="../img/user-perfil.png"
+                    src="~/img/user-perfil.png"
                     class="avatar img-fluid rounded me-1"
                     alt="Charles Hall"
                   />
@@ -112,23 +120,24 @@
 
                 <a
                   class="nav-link dropdown-toggle d-none d-sm-inline-block"
-                  href="#"
                   data-bs-toggle="dropdown"
                 >
                   <img
-                    src="../img/user-perfil.png"
+                    src="~/img/user-perfil.png"
                     class="avatar img-fluid rounded me-1"
                     alt="Charles Hall"
                   />
-                  <span class="text-dark">AlexanderLR</span>
+                  @if (User.Identity.IsAuthenticated != null)
+                  {
+                    <span class="text-dark">@User.Identity.Name</span>
+                  }
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <div class="dropdown-divider"></div>
 
-                  <a class="dropdown-item text-danger" href="#">
-                    <i class="align-middle me-1" data-feather="log-out"></i
-                    >Cerrar sesión</a
-                  >
+                  <a asp-action="CerrarSesion" asp-controller="Home" class="dropdown-item text-danger">
+                    <i  class="align-middle me-1" data-feather="log-out"></i
+                    >Cerrar sesión</a>
                 </div>
               </li>
             </ul>
@@ -141,7 +150,7 @@
             <nav class="fw-bold">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="../equipos.html">Equipos</a>
+                  <a asp-controller="Organizador" asp-action="equipos">Equipos</a>
                 </li>
                 <li class="breadcrumb-item active">Información de equipo</li>
               </ol>
@@ -225,7 +234,7 @@
                                 <td class="text-center">
                                   <img
                                     class="img-fluid"
-                                    src="../img/jugador.jpeg"
+                                    src="~/img/jugador.jpeg"
                                     width="100"
                                     alt=""
                                   />
@@ -244,7 +253,7 @@
                                 <td class="text-center">
                                   <img
                                     class="img-fluid"
-                                    src="../img/jugador.jpeg"
+                                    src="~/img/jugador.jpeg"
                                     width="100"
                                     alt=""
                                   />
@@ -263,7 +272,7 @@
                                 <td class="text-center">
                                   <img
                                     class="img-fluid"
-                                    src="../img/jugador.jpeg"
+                                    src="~/img/jugador.jpeg"
                                     width="100"
                                     alt=""
                                   />
@@ -282,7 +291,7 @@
                                 <td class="text-center">
                                   <img
                                     class="img-fluid"
-                                    src="../img/jugador.jpeg"
+                                    src="~/img/jugador.jpeg"
                                     width="100"
                                     alt=""
                                   />
@@ -301,7 +310,7 @@
                                 <td class="text-center">
                                   <img
                                     class="img-fluid"
-                                    src="../img/jugador.jpeg"
+                                    src="~/img/jugador.jpeg"
                                     width="100"
                                     alt=""
                                   />
@@ -448,6 +457,6 @@
       </div>
     </div>
 
-    <script src="../js/app.js"></script>
+    <script src="~/js/app.js"></script>
   </body>
 </html>

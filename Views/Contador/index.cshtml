@@ -1,0 +1,93 @@
+@{
+    ViewData["Title"] = "SportSyncSoftware Organizador";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Couch</title>
+  <link rel="stylesheet" href="~/css/panel_Conta.css">
+  
+</head>
+<body>
+
+<div class="navbar">
+  <div class="navbar-left">
+    <img src="~/img/logo.png" alt="Icono" style="width: 170px; height: auto;">
+  </div>
+  <div class="navbar-right">
+  
+    
+    <a href="#" id="logout" style="text-decoration: none; display: flex; align-items: center;">
+      
+      <a asp-action="CerrarSesion" asp-controller="Home" class="dropdown-item text-danger">
+                    <i  class="align-middle me-1" data-feather="log-out"></i
+                    > Cerrar sesión</a>
+      <ion-icon name="log-out-outline" style="color: rgb(255, 255, 255);"></ion-icon>
+    </a>
+    <a asp-controller="Contador" asp-action="panelContador" class="btn">Ir a panel</a> <!-- Botón añadido -->
+  </div>
+</div>
+
+<div class="container">
+  <h1>Torneos</h1>
+  @if (User.Identity.IsAuthenticated != null)
+                  {
+                    <span class="text-dark ">@User.Identity.Name</span>
+                  }
+  <br>
+<h1 style="text-align: center;">Torneos Asignados</h1><br> 
+ <br>
+ <div class="container">
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="~/img/f3.jpeg" alt="Torneo 1">
+      <div class="card-content">
+        <h2>Nombre del Torneo 1</h2>
+        <p>Categoría: <input type="text" placeholder="Categoría o Tipo"></p>
+        <p>Descripción: <input type="text" placeholder="Descripción del Deporte"></p>
+        <p>Estado Actual: <input type="text" placeholder="Estado"></p>
+        <p>Fase: <input type="text" placeholder="Fase del Torneo"></p>
+        <p>Partidos Jugados: <input type="text" placeholder="Partidos Jugados"></p>
+        <p>Partidos Pendientes: <input type="text" placeholder="Partidos Pendientes"></p>
+        <br>
+        <button class="modify-btn">Modificar</button>
+      </div>
+    </div>
+  
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="~/img/f3.jpeg" alt="Torneo 2">
+      <div class="card-content">
+        <h2>Nombre del Torneo 2</h2>
+        <p>Categoría: <input type="text" placeholder="Categoría o Tipo"></p>
+        <p>Descripción: <input type="text" placeholder="Descripción del Deporte"></p>
+        <p>Estado Actual: <input type="text" placeholder="Estado"></p>
+        <p>Fase: <input type="text" placeholder="Fase del Torneo"></p>
+        <p>Partidos Jugados: <input type="text" placeholder="Partidos Jugados"></p>
+        <p>Partidos Pendientes: <input type="text" placeholder="Partidos Pendientes"></p>
+        <br>
+        <button class="modify-btn">Modificar</button>
+      </div>
+    </div>
+  </div> 
+</div>
+<!-- ====== ionicons ======= -->
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+></script>
+<script src="panel.js"></script>
+
+</body>
+</html>

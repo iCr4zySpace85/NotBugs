@@ -1,0 +1,280 @@
+@{
+    ViewData["Title"] = "SportSyncSoftware Organizador";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>SportSyncSoftware Organizador Torneos</title>
+
+    <link href="~/css/app.css" rel="stylesheet" />
+    <link href="~/css/sidebar.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    
+    @* <link href="~/css/SideNavbar.css" rel="stylesheet" /> *@
+    <link rel="stylesheet" href="~/css/ConteL.css" />
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="~/css/permisos.css">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <div class="text-center bg-blue sidebar-brand">
+            <div class="text-center">
+              <div class="text-center">
+                <img
+                  src="~/img/logo-sportsync.png"
+                  class="img-fluid"
+                  width="180"
+                />
+              </div>
+            </div>
+          </div>
+
+          <ul class="sidebar-nav">
+            <li class="sidebar-header">Paginas</li>
+
+            <li class="sidebar-item active">
+              <a class="sidebar-link" asp-controller="Admin" asp-action="Index">
+                <i class="align-middle" data-feather="sliders"></i>
+                <span class="align-middle">Usuarios</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Admin" asp-action="roles">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Roles</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Admin" asp-action="permisos">
+                <i class="align-middle" data-feather="user-check"></i>
+                <span class="align-middle">Permisos</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="~/img/user-perfil.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                </a>
+
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="~/img/user-perfil.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                 @if (User.Identity.IsAuthenticated != null)
+                  {
+                    <span class="text-dark">@User.Identity.Name</span>
+                  }
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <div class="dropdown-divider"></div>
+
+                  <a asp-action="CerrarSesion" asp-controller="Home" class="dropdown-item text-danger">
+                    <i  class="align-middle me-1" data-feather="log-out"></i
+                    >Cerrar sesión</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="content">
+          <div class="container-fluid p-0">
+          
+          <!-- BREADCRUMB -->
+            <nav class="fw-bold">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a asp-controller="Admin" asp-action="index">Usuarios</a>
+                </li>
+                <li class="breadcrumb-item active">Editar a : Usaurio 1</li>
+              </ol>
+            </nav>
+            <!-- ---------- -->
+          
+            <!-- USER APARTADO -->
+    <div id="UserMNB" class="containerP"  >
+        <div class="cardUserL">
+          <div class="cardUserL-header">
+            <h1>Nombre de Usuario</h1>
+            <div>
+              <button><ion-icon name="create-outline"></ion-icon></button>
+              <button><ion-icon name="trash-outline"></ion-icon></button>
+            </div>
+          </div>
+          <div class="cardUserL-content">
+            <p>Datos</p>
+          </div>
+        </div>  
+        <div class="containerGr">
+          <div class="cardG-1 card">
+            <div class="card-header">
+                <h1>Perfil</h1> 
+            </div>
+            <div class="card-content">
+                <!-- Contenido adicional de la card -->
+                <p>Correo: <input type="text" value="usuario@correo.com" disabled id="email-field"> <ion-icon name="create-outline" class="edit-icon" id="open-edit-email"></ion-icon></p>
+                <p>Contraseña: <input type="password" value="contraseña123" disabled id="password-field"> <ion-icon name="create-outline" class="edit-icon" id="open-edit-password"></ion-icon></p>
+                <p>Rol: <input type="text" value="Administrador" disabled id="role-field"> <ion-icon name="create-outline" class="edit-icon" id="open-edit-role"></ion-icon></p>
+            </div>
+            <div class="card-content">
+              <!-- Contenido adicional de la card -->
+            </div>
+          </div>
+          <div class="cardG-2 card">
+            <div class="card-header">
+              <h1>Informacion del usuario:</h1>
+              <div>
+                <button><ion-icon name="create-outline"></ion-icon></button>
+                <button><ion-icon name="trash-outline"></ion-icon></button>
+              </div>
+            </div>
+            <div class="card-content">
+              <!-- Contenido adicional de la card -->
+            </div>
+          </div>
+          <div class="cardG-3 card">
+            <div class="card-header">
+              <h1>Privilegios</h1>
+              <div>
+                <button><ion-icon name="create-outline"></ion-icon></button>
+                <button><ion-icon name="trash-outline"></ion-icon></button>
+              </div>
+            </div>
+            <div class="card-content">
+              <!-- Contenido adicional de la card -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal para editar -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar campo</h2>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="edit-value">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-cancel" onclick="closeModal()">Cancelar</button>
+                <button class="btn" onclick="saveChanges()">Guardar</button>
+            </div>
+        </div>
+    </div>
+            
+            </div>
+          </div>
+        </main>
+        
+      </div>
+    </div>
+
+    <script src="~/js/app.js"></script>
+    <script src="~/js/mostrarJ.js"></script>
+    <script src="~/js/tablas.js"></script>
+    
+    <script>
+        // Función para abrir la modal y cargar el valor actual
+        function openModal(fieldId) {
+            var field = document.getElementById(fieldId);
+            var editValue = document.getElementById('edit-value');
+            editValue.value = field.value;
+            document.getElementById('editModal').style.display = "block";
+        }
+
+        // Función para cerrar la modal
+        function closeModal() {
+            document.getElementById('editModal').style.display = "none";
+        }
+
+        // Función para guardar los cambios
+        function saveChanges() {
+            var fieldId = document.getElementById('editModal').getAttribute('data-field');
+            var field = document.getElementById(fieldId);
+            var editValue = document.getElementById('edit-value');
+            field.value = editValue.value;
+            closeModal();
+        }
+
+        // Asignar eventos a los iconos de editar
+        document.getElementById('open-edit-email').addEventListener('click', function() {
+            openModal('email-field');
+            document.getElementById('editModal').setAttribute('data-field', 'email-field');
+        });
+
+        document.getElementById('open-edit-password').addEventListener('click', function() {
+            openModal('password-field');
+            document.getElementById('editModal').setAttribute('data-field', 'password-field');
+        });
+
+        document.getElementById('open-edit-role').addEventListener('click', function() {
+            openModal('role-field');
+            document.getElementById('editModal').setAttribute('data-field', 'role-field');
+        });
+    </script>
+
+    <!-- ====== ionicons ======= -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    
+  </body>
+</html>

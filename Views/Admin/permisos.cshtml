@@ -16,11 +16,16 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <title>Contabilidad | SportSync</title>
+    <title>SportSyncSoftware Organizador Torneos</title>
 
     <link href="~/css/app.css" rel="stylesheet" />
     <link href="~/css/sidebar.css" rel="stylesheet" />
     <link href="~/css/styles.css" rel="stylesheet" />
+    
+    @* <link href="~/css/SideNavbar.css" rel="stylesheet" /> *@
+    <link rel="stylesheet" href="~/css/ConteL.css" />
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="~/css/permisos.css">
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
@@ -53,46 +58,27 @@
             <li class="sidebar-header">Paginas</li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" asp-controller="Organizador" asp-action="Index">
+              <a class="sidebar-link" asp-controller="Admin" asp-action="Index">
                 <i class="align-middle" data-feather="sliders"></i>
-                <span class="align-middle">Torneos</span>
+                <span class="align-middle">Usuarios</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" asp-controller="Organizador" asp-action="coaches">
+              <a class="sidebar-link" asp-controller="Admin" asp-action="roles">
                 <i class="align-middle" data-feather="user"></i>
-                <span class="align-middle">Coaches</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" asp-controller="Organizador" asp-action="arbitros">
-                <i class="align-middle" data-feather="user-check"></i>
-                <span class="align-middle">Arbitros</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" asp-controller="Organizador" asp-action="equipos">
-                <i class="align-middle" data-feather="users"></i>
-                <span class="align-middle">Equipos</span>
+                <span class="align-middle">Roles</span>
               </a>
             </li>
 
             <li class="sidebar-item active">
-              <a class="sidebar-link" asp-controller="Organizador" asp-action="contabilidad">
-                <i class="align-middle" data-feather="dollar-sign"></i>
-                <span class="align-middle">Contabilidad</span>
+              <a class="sidebar-link" asp-controller="Admin" asp-action="permisos">
+                <i class="align-middle" data-feather="user-check"></i>
+                <span class="align-middle">Permisos</span>
               </a>
             </li>
 
-            <li class="sidebar-item">
-              <a class="sidebar-link" asp-controller="Organizador" asp-action="noticias">
-                <i class="align-middle" data-feather="book"></i>
-                <span class="align-middle">Noticias</span>
-              </a>
-            </li>
+            
           </ul>
         </div>
       </nav>
@@ -128,7 +114,7 @@
                     class="avatar img-fluid rounded me-1"
                     alt="Charles Hall"
                   />
-                  @if (User.Identity.IsAuthenticated != null)
+                 @if (User.Identity.IsAuthenticated != null)
                   {
                     <span class="text-dark">@User.Identity.Name</span>
                   }
@@ -147,72 +133,32 @@
 
         <main class="content">
           <div class="container-fluid p-0">
-            <div class="d-flex justify-content-between align-items-center">
-              <h3 class="fw-bold">Contabilidad</h3>
-              <div class="d-flex nav-card">
-                <a asp-controller="Organizador" asp-action="contadores" class="me-3 card-link"
-                  >Contadores <i class="m-2 fa-solid fa-user-tie"></i
-                ></a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="input-group flex-nowrap form-search">
-                      <span class="input-group-text" id="addon-wrapping"
-                        ><i class="fa-solid fa-magnifying-glass"></i
-                      ></span>
-                      <input
-                        type="text"
-                        class="form-control form-xx"
-                        placeholder="Buscar torneo"
-                      />
+              
+              <div id="permisosContenido" class="contenido">
+          <div class="card"> 
+            <div class="card-body">
+              <div class="contenedor-tabla">
+                <div class="tabla">
+                    <div class="encabezado-tabla">
+                        <div class="encabezado-item">Nombre</div>
+                        <div class="encabezado-item">Asignado a</div>
+                        <div class="encabezado-item">Acciones</div>
                     </div>
-                  </div>
-                  <div class="card-body align-self-center">
-                    <div class="row">
-                      
-                      <div class="col-md-6">
-                        <div
-                          class="card mb-3 shadown-card"
-                          style="max-width: 540px"
-                        >
-                          <div class="row g-0">
-                            <div class="col-md-5 p-2">
-                              <img
-                                src="~/img/torneos/torneo2.jpeg"
-                                class="img-fluid img-torneos"
-                                alt="..."
-                              />
-                            </div>
-                            <div class="col-md-7">
-                              <div class="card-body">
-                                <h5 class="card-title">Nombre torneo</h5>
-                                <p>Deporte:</p>
-                                <p>Categoria:</p>
-                                <p>Temporada:</p>
-
-                                <a
-                                  type="button"
-                                  class="btn btn-primary btn-sm"
-                                  asp-controller="Organizador" asp-action="cuenta"
-                                >
-                                  Cuenta del torneo
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="cuerpo-tabla" id="cuerpo-tabla">
+                        <!-- Aquí se insertarán dinámicamente los registros -->
                     </div>
-                  </div>
                 </div>
-              </div>
+                <div class="paginacion" id="paginacion"></div>
             </div>
+            
           </div>
+        </div>
+      </div>
+            
+            </div>
+          
         </main>
-
+        
         <footer class="footer">
           <div class="container-fluid">
             <div class="row text-muted">
@@ -227,9 +173,23 @@
             </div>
           </div>
         </footer>
+        
       </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/js/tablas.js"></script>
+    <script src="~/js/permisos.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    
   </body>
 </html>

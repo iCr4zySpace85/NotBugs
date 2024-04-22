@@ -1,0 +1,250 @@
+@{
+    ViewData["Title"] = "SportSyncSoftware Organizador";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>SportSyncSoftware Organizador Torneos</title>
+
+    <link href="~/css/app.css" rel="stylesheet" />
+    <link href="~/css/sidebar.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    
+    @* <link href="~/css/SideNavbar.css" rel="stylesheet" /> *@
+    <link rel="stylesheet" href="~/css/Pn_Con.css">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <div class="text-center bg-blue sidebar-brand">
+            <div class="text-center">
+              <div class="text-center">
+                <img
+                  src="~/img/logo-sportsync.png"
+                  class="img-fluid"
+                  width="180"
+                />
+              </div>
+            </div>
+          </div>
+
+          <ul class="sidebar-nav">
+            <li class="sidebar-header">Paginas</li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Contador" asp-action="panelContador">
+                <ion-icon name="calendar-outline" style="width: 24px; height: 24px;"></ion-icon>
+                <span class="align-middle">Inicio</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Contador" asp-action="inscripciones">
+                <ion-icon name="people-outline" style="width: 24px; height: 24px;"></ion-icon>
+                <span class="align-middle">Inscripciones</span>
+              </a>
+            </li>
+            
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Contador" asp-action="arbitraje">
+                 <ion-icon name="clipboard-outline" style="width: 24px; height: 24px;"></ion-icon>
+                <span class="align-middle">Arbitrajes</span>
+              </a>
+            </li>
+            
+            <li class="sidebar-item active">
+              <a class="sidebar-link" asp-controller="Contador" asp-action="patrocinadores">
+                 <ion-icon name="card-outline" style="width: 24px; height: 24px;"></ion-icon>
+                <span class="align-middle">Patrocinadores</span>
+              </a>
+            </li>
+            
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Contador" asp-action="gastos">
+                <ion-icon name="cash-outline" style="width: 24px; height: 24px;"></ion-icon>
+                <span class="align-middle">Gastos</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="~/img/user-perfil.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                </a>
+
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="~/img/user-perfil.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                 @if (User.Identity.IsAuthenticated != null)
+                  {
+                    <span class="text-dark">@User.Identity.Name</span>
+                  }
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <div class="dropdown-divider"></div>
+
+                  <a asp-action="CerrarSesion" asp-controller="Home" class="dropdown-item text-danger">
+                    <i  class="align-middle me-1" data-feather="log-out"></i
+                    >Cerrar sesión</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="content">
+          <div class="container-fluid p-0">
+          
+            <div class="card-body">
+                <div class="cardÑ">
+                    <div class="image-container">
+                      <img src="https://via.placeholder.com/400x200" alt="Torneo">
+                    </div>
+                    <div class="info-container">
+                      <h1>Nombre del Torneo</h1>
+                      <p>Categoría o tipo de torneo: <span id="categoria">Categoria</span></p>
+                      <p>Equipos participantes: <span id="equipos">Equipos</span></p>
+                      <p>Estado actual del torneo: <span id="estado">Estado</span></p>
+                      <p>Descripción del deporte: <span id="descripcion">Descripción</span></p>
+                      <p>Fase del torneo: <span id="fase">Fase</span></p>
+                      <p>Partidos pendientes: <span id="fase">3</span></p>
+                    </div>
+                  </div>
+            </div>
+            
+           <br>
+                <br>
+                <div class="card-containerPt">
+                  <div class="cardPatro">
+                    <h2>Nuevo Patrocinador</h2><br>
+                    <div class="form-group">
+                      <label for="nombre">Nombre:</label>
+                      <input type="text" id="nombre" name="nombre">
+                    </div>
+                    <div class="form-group">
+                      <label for="descripcion">Descripción:</label>
+                      <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="tipoApoyo">Tipo de Apoyo:</label>
+                      <select id="tipoApoyo" name="tipoApoyo">
+                        <option value="opción1">Opción 1</option>
+                        <option value="opción2">Opción 2</option>
+                        <option value="opción3">Opción 3</option>
+                      </select>
+                    </div>
+                     
+                    <button>Registrar Gasto</button>
+                  </div>
+                
+                  <div class="cardPatro">
+                    <h2>Lista de Patrocinadores</h2><br>
+                    <div class="form-group">
+                      <label for="nombreNuevo">Nombre:</label>
+                      <input type="text" id="nombreNuevo" name="nombreNuevo">
+                    </div>
+                    <div class="form-group">
+                      <label for="descripcionNuevo">Descripción:</label>
+                      <input type="text" id="descripcionNuevo" name="descripcionNuevo">
+                    </div>
+                    <div class="form-group">
+                      <label for="tipoApoyoNuevo">Tipo de Apoyo:</label>
+                      <input type="text" id="tipoApoyoNuevo" name="tipoApoyoNuevo">
+                    </div>
+                    <div class="form-group">
+                      <label for="fechaNuevo">Fecha:</label>
+                      <input type="text" id="fechaNuevo" name="fechaNuevo">
+                    </div>
+                  </div>
+                
+                  <!-- Aquí puedes agregar más tarjetas -->
+                
+                </div>
+                
+          </div>
+        </main>
+        
+      </div>
+    </div>
+
+    <script src="~/js/app.js"></script>
+    <script src="~/js/mostrarJ.js"></script>
+    <script src="~/js/tablas.js"></script>
+    <script src="~/js/Pn_C.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    
+    <script>
+        // Al inicio, ocultar el contenido para no inscritos
+        document.getElementById('noInscritosContent').classList.add('hidden');
+
+        function showContent(contentId) {
+        var contentToShow = document.getElementById(contentId + 'Content');
+        var otherContentId = (contentId === 'inscritos') ? 'noInscritos' : 'inscritos';
+        var otherContent = document.getElementById(otherContentId + 'Content');
+
+        contentToShow.classList.remove('hidden');
+        otherContent.classList.add('hidden');
+        }
+    </script>
+    
+  </body>
+</html>

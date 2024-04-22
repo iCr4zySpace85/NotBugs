@@ -1,0 +1,141 @@
+.card-couch {
+    width: 95%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+  
+.card-couch img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: block;
+}
+  
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+  
+.card-couch input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+  
+.card-couch input[type="text"]:last-child {
+    margin-right: 0;
+}
+
+/*==================== TABLAS DISEÑO ======================*/
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.players-table th, .players-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.players-table th {
+    background-color: #f2f2f2;
+}
+
+.players-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #1A203B;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    margin-left: 5px;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-menu {
+    display: flex;
+}
+
+.pagination-item {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.pagination-item.active {
+    background-color: #1A203B;
+    color: #fff;
+}
+
+/*===================== TABLAS 2 ==============*/
+.cardtble {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.matches-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.matches-table th, .matches-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.matches-table th {
+    background-color: #f2f2f2;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-menu {
+    display: flex;
+}
+
+.pagination-item {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.pagination-item.active {
+    background-color: #1A203B;
+    color: #fff;
+}

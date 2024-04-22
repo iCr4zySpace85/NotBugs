@@ -1,0 +1,606 @@
+.card-header {
+  padding: 10px;  
+  display: flex; /* Activar el contenedor como flexbox */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.cardÑ {
+  width: 95%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  padding: 30px; 
+  margin: 0 auto;
+  justify-content: space-around; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+
+  
+  .image-container {
+    width: 200px; /* Ancho cuadrado */
+    height: 200px; /* Alto cuadrado */
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    width: 100%; /* La imagen ocupa el 100% del contenedor */
+    height: 100%; /* La imagen ocupa el 100% del contenedor */
+    object-fit: cover; /* La imagen se ajusta para llenar el contenedor */
+    border-radius: 50%;
+  }
+  
+  .info-container {
+    padding: 20px;
+  }
+  
+  .info-container input[type="text"] {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .info-container p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  
+  .expense-container {
+    flex-grow: 1; /* El contenedor de gastos ocupará todo el espacio disponible */
+    padding: 20px;
+  }
+  
+  .expense-container h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .new-expense label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .new-expense textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Permite que el usuario redimensione verticalmente el textarea */
+  }
+  
+  .new-expense input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .title-container {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .title-container h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .expense-list {
+    padding: 20px;
+    border-left: 1px solid #ccc; /* Añade una línea divisoria a la izquierda */
+    overflow-y: auto; /* Añade un scroll vertical si la lista es más larga que el contenedor */
+    max-height: 300px; /* Altura máxima de la lista antes de que aparezca el scroll */
+  }
+  
+  .gastos {
+    padding: 10px 0;
+  }
+  
+  .gasto {
+    border-bottom: 1px solid #ccc; /* Línea divisoria entre gastos */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .gasto:last-child {
+    border-bottom: none; /* No se necesita línea divisoria en el último gasto */
+  }
+  .registrar-gastos {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #1A203B;
+    border: 2px solid #1A203B;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .registrar-gastos:hover {
+    background-color: rgb(6, 71, 141);
+    border-color: rgb(6, 71, 141);
+  }  
+
+  .income-container {
+    padding: 20px;
+  }
+  
+  .income-item {
+    margin-bottom: 10px;
+  }
+  
+  .income-item label {
+    display: inline-block;
+    width: 200px;
+    font-weight: bold;
+  }
+  
+  .income-item input[type="number"] {
+    width: calc(100% - 220px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .total-income {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .total-income p {
+    font-weight: bold;
+  }
+  
+  .total-income span {
+    font-size: 18px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  /*============================ GRID CCCCCC ===========================*/
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .cardGridC {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .cardGridC img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .cardGridC .card-info {
+    padding: 10px;
+  }
+  
+  .cardGridC .card-info h3 {
+    margin-top: 0;
+  }
+  
+  .cardGridC .card-info p {
+    margin: 5px 0;
+  }
+  
+  .cardGridC .btn-modificar {
+    background-color: #1A203B;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .cardGridC .btn-modificar:hover {
+    background-color: #28356d;
+  }
+
+  /*================== RADIOS ===================*/
+  .radio-inputs {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #EEE;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: 300px;
+    font-size: 14px;
+    margin-left: 15px;
+  }
+  
+  .radio-inputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  
+  .radio-inputs .radio input {
+    display: none;
+  }
+  
+  .radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all .15s ease-in-out;
+  }
+  
+  .radio-inputs .radio input:checked + .name {
+    background-color: #fff;
+    font-weight: 600;
+  }
+
+  /* Clase para mostrar las tarjetas */
+.mostrar-tarjetas {
+    display: block;
+  }
+  
+  /* Clase para ocultar las tarjetas */
+  .ocultar-tarjetas {
+    display: none;
+  }
+
+  .hidden {
+    display: none;
+  }
+  /*=================* CARD INSCRITOS =============================*/
+  .team-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .team-card {
+    width: calc(29% - 20px); /* Para que haya espacio entre las cards */
+    margin-bottom: 30px; /* Aumento del espacio entre las cards */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .team-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .team-card-info {
+    padding: 20px; /* Aumento del espacio alrededor del contenido */
+  }
+  
+  .team-card-info h2 {
+    margin-top: 0;
+  }
+  
+  .team-card-info button {
+    background-color: #1A203B; /* Color verde */
+    color: white;
+    padding: 12px 24px; /* Aumento del espacio dentro del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .team-card-info button:hover {
+    background-color: #1A203B; /* Cambio de color al pasar el mouse */
+  }
+  
+  /*===============No INSCRITOS ========================*/
+  .unregistered-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .unregistered-card {
+    width: calc(28% - 20px); /* Para que haya espacio entre las cards */
+    margin-bottom: 30px; /* Aumento del espacio entre las cards */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .unregistered-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .unregistered-card-info {
+    padding: 20px; /* Aumento del espacio alrededor del contenido */
+  }
+  
+  .unregistered-card-info h2 {
+    margin-top: 0;
+  }
+  
+  .unregistered-card-info p {
+    margin: 10px 0; /* Espacio entre los párrafos */
+  }
+  
+  .checklist {
+    margin-top: 20px; /* Espacio entre el check y las cards */
+  }
+  
+  .checklist input[type="checkbox"] {
+    margin-right: 10px; /* Espacio entre el checkbox y el texto */
+  }
+  
+  .checklist label {
+    cursor: pointer;
+  }
+  
+
+  .dropdown-container {
+    display: flex;
+    justify-content: space-around; 
+  }
+  
+  .dropdown {
+    position: relative;
+    flex: 1; /* El dropdown se expandirá para ocupar el espacio restante */
+  }
+  
+  .dropdown-btn {
+    background-color: #1A203B;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropdown-btn {
+    background-color: #1A203B;
+  }
+  
+  .custom-button {
+    background-color: #1A203B; /* Cambia al color que desees */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-right: 40px; /* Espacio entre el dropdown y el botón */
+  }
+
+    
+  .custom-buttonL {
+    background-color: #1A203B; /* Cambia al color que desees */
+    color: white;
+    padding: 10px 15px; 
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-right: 40px; /* Espacio entre el dropdown y el botón */
+  }
+  
+
+  /*========================== ARBITRAJE ================================*/
+  .match-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px;
+  }
+  
+  .match-pair {
+    width: calc(50% - 20px); /* Dos cartas en una fila */ 
+    margin-bottom: 20px; /* Espacio entre las filas */
+    margin-right: 20px; /* Espacio entre las cartas */
+  }
+  
+  .match-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team {
+    text-align: center;
+  }
+  
+  .team-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .arbitration {
+    margin-top: 20px;
+  }
+  
+  .arbitration input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .arbitration label {
+    font-size: 14px;
+  }
+  
+  .versus {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Estilos para el botón flotante */
+.floating-button {
+  position: fixed;
+  bottom: 20px; /* distancia desde abajo */
+  right: 20px; /* distancia desde la derecha */
+  background-color: #1A203B; /* color de fondo */
+  color: white; /* color del texto */
+  border: none; /* sin borde */
+  border-radius: 20px; /* bordes redondeados */
+  padding: 10px 20px; /* espacio interno */
+  font-size: 16px; /* tamaño del texto */
+  cursor: pointer; /* cursor al pasar el ratón */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* sombra */
+  z-index: 1000; /* para estar encima de otras capas */
+}
+
+/* Cambio de estilo al pasar el ratón */
+.floating-button:hover {
+  background-color: #0056b3; /* color de fondo al pasar el ratón */
+}
+
+
+.phase-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.previous-phase-card {
+  width: calc(50% - 20px); /* Dos cartas en una fila */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Espacio entre las cartas */
+}
+
+.previous-phase-card .team {
+  text-align: center;
+}
+
+.previous-phase-card .team-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.previous-phase-card .arbitration {
+  margin-top: 20px;
+}
+
+.previous-phase-card .arbitration input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.previous-phase-card .arbitration label {
+  font-size: 14px;
+}
+
+.previous-phase-card .versus {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+
+/* Contenedor para las tarjetas */
+.card-containerPt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Estilos de la tarjeta */
+.cardPatro {
+  width: calc(50% - 20px); /* Restamos el espacio del margen para que quepan dos en una fila */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px; /* Espacio entre las tarjetas */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilos de contenido */
+.cardPatro h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #1A203B;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #1A203B;
+}

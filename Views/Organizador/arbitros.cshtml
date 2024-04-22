@@ -1,3 +1,11 @@
+@{
+    ViewData["Title"] = "SportSyncSoftware Organizador";
+}
+
+@{
+    Layout = null;
+}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,6 +22,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+    />
   </head>
 
   <body>
@@ -24,7 +37,7 @@
             <div class="text-center">
               <div class="text-center">
                 <img
-                  src="img/logo-sportsync.png"
+                  src="~/img/logo-sportsync.png"
                   class="img-fluid"
                   width="180"
                 />
@@ -36,42 +49,42 @@
             <li class="sidebar-header">Paginas</li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="index.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="Index">
                 <i class="align-middle" data-feather="sliders"></i>
                 <span class="align-middle">Torneos</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="coaches.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="coaches">
                 <i class="align-middle" data-feather="user"></i>
                 <span class="align-middle">Coaches</span>
               </a>
             </li>
 
             <li class="sidebar-item active">
-              <a class="sidebar-link" href="arbitros.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="arbitros">
                 <i class="align-middle" data-feather="user-check"></i>
                 <span class="align-middle">Arbitros</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="equipos.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="equipos">
                 <i class="align-middle" data-feather="users"></i>
                 <span class="align-middle">Equipos</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="contabilidad.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="contabilidad">
                 <i class="align-middle" data-feather="dollar-sign"></i>
                 <span class="align-middle">Contabilidad</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="noticias.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="noticias">
                 <i class="align-middle" data-feather="book"></i>
                 <span class="align-middle">Noticias</span>
               </a>
@@ -103,19 +116,21 @@
                   data-bs-toggle="dropdown"
                 >
                   <img
-                    src="img/user-perfil.png"
+                    src="~/img/user-perfil.png"
                     class="avatar img-fluid rounded me-1"
                     alt="Charles Hall"
                   />
-                  <span class="text-dark">AlexanderLR</span>
+                  @if (User.Identity.IsAuthenticated != null)
+                  {
+                    <span class="text-dark">@User.Identity.Name</span>
+                  }
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <div class="dropdown-divider"></div>
 
-                  <a class="dropdown-item text-danger" href="#">
-                    <i class="align-middle me-1" data-feather="log-out"></i
-                    >Cerrar sesión</a
-                  >
+                  <a asp-action="CerrarSesion" asp-controller="Home" class="dropdown-item text-danger">
+                    <i  class="align-middle me-1" data-feather="log-out"></i
+                    >Cerrar sesión</a>
                 </div>
               </li>
             </ul>
@@ -130,9 +145,158 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <!-- <h5 class="card-title mb-0">Empty card</h5> -->
+                    <div class="input-group flex-nowrap form-search">
+                      <span class="input-group-text" id="addon-wrapping"
+                        ><i class="fa-solid fa-magnifying-glass"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control form-xx"
+                        placeholder="Buscar arbitro"
+                      />
+                    </div>
                   </div>
-                  <div class="card-body"></div>
+                  <div class="card-body">
+                    <table class="table table-striped display" id="equipos">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Imagen</th>
+                          <th>Nombre</th>
+                          <th>Partidos</th>
+                          <th>Deporte</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td class="text-center">
+                            <img
+                              class="img-fluid"
+                              src="~/img/arbitro.jpg"
+                              width="150"
+                              alt=""
+                            />
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>
+                            <button class="btn btn-primary fw-bold">
+                              Editar
+                            </button>
+                            <button class="btn btn-danger fw-bold">
+                              Eliminar
+                            </button>
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="button-floating p-4">
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#agregar"
+              >
+                <i
+                  class="fa-solid fa-circle-plus m-2"
+                  style="color: #ffffff; font-size: medium"
+                ></i
+                >Nuevo arbitro
+              </button>
+            </div>
+          </div>
+          <div class="modal fade" id="agregar" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content rounded-0">
+                <div class="modal-header bg-azul rounded-0 text-white">
+                  <h1 class="modal-title fs-5 text-white">Agregar arbitro</h1>
+                  <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form action="" class="p-">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Imagen:</label>
+                          <input
+                            class="form-control form-control"
+                            id="formFileSm"
+                            type="file"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Apellido paterno:</label>
+                          <input
+                            class="form-control form-control"
+                            id="formFileSm"
+                            type="text"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Correo electronico:</label>
+                          <input type="email" class="form-control" required />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Nombre:</label>
+                          <input type="text" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Apellido materno:</label>
+                          <input
+                            class="form-control form-control"
+                            id="formFileSm"
+                            type="text"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Deporte:</label>
+                          <select
+                            class="form-select"
+                            aria-label="Default select example"
+                          >
+                            <option selected>Selecciona un deporte</option>
+                            <option value="1">Futbol</option>
+                            <option value="2">Basketball</option>
+                            <option value="3">Volleyball</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-3 text-md-end">
+                      <button
+                        type="button"
+                        class="btn btn-danger rounded-0"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancelar
+                      </button>
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        href="reglas.html"
+                      >
+                        Agregar
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

@@ -75,9 +75,24 @@ namespace CrafterCodes.Controllers
             return View();
         }
         
+        public IActionResult contadores()
+        {
+             return View("~/Views/Organizador/contabilidad/contadores.cshtml");
+        }
+        
+        public IActionResult cuenta()
+        {
+             return View("~/Views/Organizador/contabilidad/cuenta.cshtml");
+        }
+        
         public IActionResult equipos()
         {
             return View();
+        }
+        
+        public IActionResult gestionarEquipo()
+        {
+             return View("~/Views/Organizador/equipos/gestionarEquipo.cshtml");
         }
         
         public IActionResult noticias()

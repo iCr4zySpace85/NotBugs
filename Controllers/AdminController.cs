@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CrafterCodes.Controllers
 {
-    [Authorize(Roles = "Organizador, Administrador")]// Esto requiere autenticación para todas las acciones en este controlador
+    [Authorize(Roles = "Administrador")]// Esto requiere autenticación para todas las acciones en este controlador
     public class AdminController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -28,61 +28,31 @@ namespace CrafterCodes.Controllers
             _logger = logger;
             _contexto = contexto;
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-        
-        public IActionResult agregarEquipos()
-        {
-           return View("~/Views/Organizador/torneos/agregarEquipos.cshtml");
-        }
-        
-        public IActionResult gestionar()
-        {
-            return View("~/Views/Organizador/torneos/gestionar.cshtml");
-        }
-        
-        public IActionResult gestionarTorneo()
-        {
-            return View("~/Views/Organizador/torneos/gestionarTorneo.cshtml");
-        }
-        
-        public IActionResult crearTorneo()
-        {
-            // Suponiendo que la vista está directamente bajo la carpeta Views
-            return View("~/Views/Organizador/torneos/crearTorneo.cshtml");
-        }
         
         public IActionResult reglas()
         {
             return View("~/Views/Organizador/torneos/reglas.cshtml");
         }
         
-        public IActionResult coaches()
+        public IActionResult index()
         {
             return View();
         }
         
-        public IActionResult arbitros()
+        public IActionResult editarUsuario()
         {
             return View();
         }
         
-        public IActionResult contabilidad()
+        public IActionResult roles()
         {
             return View();
         }
         
-        public IActionResult equipos()
+        public IActionResult permisos()
         {
             return View();
         }
         
-        public IActionResult noticias()
-        {
-            return View();
-        }
     }
 }
