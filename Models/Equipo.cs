@@ -1,9 +1,10 @@
-
+using System.ComponentModel.DataAnnotations;
 
 namespace CrafterCodes.Models
 {
     public class Equipo
 {
+    [Key]
     public int ID_equipo { get; set; }
     public string IMG_equipo { get; set; }  // Asumiendo que se guarda como una URL o un path de archivo
     public string Nombre { get; set; }

@@ -1,9 +1,10 @@
 
-
+using System.ComponentModel.DataAnnotations;
 namespace CrafterCodes.Models
 {
     public class NoticiaEquipo
 {
+    [Key]
     public int ID_noticia_equipo { get; set; }
     public int ID_noticia { get; set; }
     public int ID_equipo { get; set; }
