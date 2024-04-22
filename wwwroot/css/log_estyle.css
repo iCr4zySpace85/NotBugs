@@ -82,19 +82,6 @@
     width: 100%;
     cursor: pointer;
   }
-
-.button-exit {
-    margin: 0px 0 0px 0;
-    background-color: #EB3316;
-    border: none;
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 10px;
-    height: 50px;
-    width: 100%;
-    cursor: pointer;
-}
   
   .button-submit:hover {
     background-color: #252727;
@@ -107,7 +94,7 @@
     margin: 5px 0;
   }
   
-  .boton {
+  .btn {
     margin-top: 10px;
     width: 100%;
     height: 50px;
@@ -123,7 +110,7 @@
     transition: 0.2s ease-in-out;
   }
   
-  .boton:hover {
+  .btn:hover {
     border: 1px solid #2d79f3;
     ;
   }

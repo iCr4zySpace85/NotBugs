@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendario</title>
+    <link rel="stylesheet" href="css/calendario.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">
+          <img src="img/logo.PNG" alt="Logo" />
+        </a>
+      </div>
+
+      <button class="menu-btn">&#9776;</button>
+
+      <div class="menu" id="menu">
+        <a href="#">Inicio</a>
+        <a href="#">Futbol</a>
+        <a href="#">Basquetball</a>
+        <a href="#">Volleyball</a>
+      </div>
+    </nav>
+    
+    <div class="contenedor-principal">
+      <h1 class="titulo">Nombre del Torneo</h1>
+      <div class="radio-inputs">
+        <label class="radio">
+          <input type="radio" name="radio" checked="" id="equiposRadio">
+          <span class="name">Inicio</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="radio" id="partidosRadio">
+          <span class="name">Calendario</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="radio" id="partidosRes">
+          <span class="name">Resultados</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="radio" id="partidosJu">
+          <span class="name">Jugadores</span>
+        </label>
+      </div>
+    </div>
+  <hr>
+    <div id="equiposContent" class="contenido contenido-activo">
+      
+    <!--  Conmtenedor 1 -->
+    <div class="contenedor-80">
+ 
+      <div class="contenedor-cards">
+        <!-- Card 1 -->
+        <div class="card">
+          <img style="width: 100%;  " src="img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 1</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+    
+        <!-- Card 2 -->
+        <div class="card">
+          <img style="width: 100%;  " src="img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 2</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <img style="width: 100%;  " src="img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 2</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <img style="width: 100%;  " src="img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 2</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+          <img style="width: 100%;  " src="img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 2</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+        
+        <!-- Card 6 -->
+        <div class="card">
+          <img style="width: 100%; " src="img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 2</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+          <img style="width: 100%;  " src="img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 2</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+          <img style="width: 100%; " src="img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 2</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+        <!-- Agrega más cards según lo necesites -->
+      </div>
+    </div>
+
+     <!-- CONTENEDOR 2 -->
+
+    <div class="contenedor-20">
+      <div class="noticia">
+        <div class="imagen-noticia">
+          <img src="img/img4.jpeg" alt="Imagen de la noticia" />
+        </div>
+        <div class="contenido-noticia">
+          <h3>Nombre del equipo</h3>
+          <p>Descripción corta del equipo ....</p>
+          
+        </div>
+      </div>
+      <!-- Noticia -->
+      <div class="noticia">
+        <div class="imagen-noticia">
+          <img src="img/img4.jpeg" alt="Imagen de la noticia" />
+        </div>
+        <div class="contenido-noticia">
+          <h3>Nombre del equipo</h3>
+          <p>Descripción corta del equipo ....</p>
+           
+        </div>
+      </div>
+      <!-- Noticia -->
+      <div class="noticia">
+        <div class="imagen-noticia">
+          <img src="img/img4.jpeg" alt="Imagen de la noticia" />
+        </div>
+        <div class="contenido-noticia">
+          <h3>Nombre del equipo</h3>
+          <p>Descripción corta del equipo ....</p> 
+        </div>
+      </div>
+      <!-- Noticia -->
+      
+    </div>
+
+    </div>
+    
+    <div id="partidosContent" class="contenido">
+      <p>Contenido de Partidos: Esta sección puede contener información sobre los partidos próximos, resultados anteriores, estadísticas, etc.</p>
+    </div>
+
+    <div id="resultadosconten" class="contenido">
+      <h1>Resultados</h1>
+    </div>
+    
+    <div id="jugadoresconte" class="contenido">
+      <h1>  Jugadores</h1>
+    </div>
+<script>
+
+
+document.addEventListener('DOMContentLoaded', function() { 
+  var radios = document.querySelectorAll('.radio-inputs input[type="radio"]');
+  
+  radios.forEach(function(radio) {
+    radio.addEventListener('change', function() { 
+      var allContents = document.querySelectorAll('.contenido');
+      allContents.forEach(function(content) {
+        content.classList.remove('contenido-activo');
+      });
+
+       
+      var contentId = '';
+      switch (radio.id) {
+        case 'equiposRadio':
+          contentId = 'equiposContent';  
+          break;
+        case 'partidosRadio':
+          contentId = 'partidosContent';  
+          break;
+        case 'partidosRes':
+          contentId = 'resultadosconten';  
+          break;
+        case 'partidosJu':
+          contentId = 'jugadoresconte';  
+          break;
+      }
+
+      if (contentId) {
+        document.getElementById(contentId).classList.add('contenido-activo');
+      }
+    });
+  });
+});
+
+
+
+</script>
+  </body>
+</html>

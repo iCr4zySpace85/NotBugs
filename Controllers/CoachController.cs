@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CrafterCodes.Controllers
 {
-    [Authorize(Roles = "Organizador, Coach")]
+    [Authorize(Roles = "Organizador, Coach, Administrador")]
     public class CoachController : Controller
     {
 
