@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Torneos | SportSync</title>
+
+    <link href="../css/app.css" rel="stylesheet" />
+    <link href="../css/sidebar.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <div class="text-center bg-blue sidebar-brand">
+            <div class="text-center">
+              <div class="text-center">
+                <img
+                  src="~/img/logo-sportsync.png"
+                  class="img-fluid"
+                  width="180"
+                />
+              </div>
+            </div>
+          </div>
+
+          <ul class="sidebar-nav">
+            <li class="sidebar-header">Paginas</li>
+
+            <li class="sidebar-item active">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="index">
+                <i class="align-middle" data-feather="sliders"></i>
+                <span class="align-middle">Torneos</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="coaches">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Coaches</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="arbitros">
+                <i class="align-middle" data-feather="user-check"></i>
+                <span class="align-middle">Arbitros</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="equipos">
+                <i class="align-middle" data-feather="users"></i>
+                <span class="align-middle">Equipos</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="contabilidad">
+                <i class="align-middle" data-feather="dollar-sign"></i>
+                <span class="align-middle">Contabilidad</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="noticias">
+                <i class="align-middle" data-feather="book"></i>
+                <span class="align-middle">Noticias</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="../img/user-perfil.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                </a>
+
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="~/img/user-perfil.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                  @if (User.Identity.IsAuthenticated != null)
+                  {
+                    <span class="text-dark">@User.Identity.Name</span>
+                  }
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <div class="dropdown-divider"></div>
+
+                  <a asp-action="CerrarSesion" asp-controller="Home" class="dropdown-item text-danger">
+                    <i  class="align-middle me-1" data-feather="log-out"></i
+                    >Cerrar sesión</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="content">
+          <div class="container-fluid p-0">
+            <!-- BREADCRUMB -->
+            <nav class="fw-bold">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a asp-controller="Organizador" asp-action="index">Torneos</a>
+                </li>
+                <li class="breadcrumb-item active">Gestión del torneo</li>
+              </ol>
+            </nav>
+            <!-- ---------- -->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header text-center">
+                    <h3 class="fw-bold">Gestión del torneo</h3>
+                  </div>
+                  <div class="card-body align-self-center">
+                    <form action="" class="p-">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="mb-3 text-center">
+                            <p class="form-label">Imagen del torneo:</p>
+                            <img
+                              src="../img/torneos/torneo1.jpeg"
+                              width="200"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Nombre del torneo:</label>
+                            <input type="text" class="form-control" required />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">Deporte:</label>
+                            <select
+                              class="form-select"
+                              aria-label="Default select example"
+                            >
+                              <option selected>Selecciona un deporte</option>
+                              <option value="1">Futbol</option>
+                              <option value="2">Basketball</option>
+                              <option value="3">Volleyball</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Categoria:</label>
+                            <select
+                              class="form-select"
+                              aria-label="Default select example"
+                            >
+                              <option selected>Selecciona categoria</option>
+                              <option value="1">Femenino</option>
+                              <option value="2">Infantil</option>
+                              <option value="3">Profesional</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <p>Rango de edad:</p>
+                        <div class="col-md-2">
+                          <div class="mb-3">
+                            <label class="form-label">De:</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="mb-3">
+                            <label class="form-label">Hasta:</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="mb-3">
+                            <label class="form-label">Fecha de inicio:</label>
+                            <input type="date" class="form-control" required />
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="mb-3">
+                            <label class="form-label">Fecha de fin:</label>
+                            <input type="date" class="form-control" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center m-3">
+                        <button type="submit" class="btn btn-primary">
+                          Guardar cambios
+                        </button>
+                      </div>
+                    </form>
+                    <h4 class="ms-3">Equipos participantes</h4>
+                    <table class="table table-striped display" id="equipos">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Equipo</th>
+                          <th>Coache</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td></td>
+                          <td>
+                            <button class="btn btn-danger fw-bold">
+                              Eliminar
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td></td>
+                          <td>
+                            <button class="btn btn-danger fw-bold">
+                              Eliminar
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry the Bird</td>
+                          <td></td>
+                          <td>
+                            <button class="btn btn-danger fw-bold">
+                              Eliminar
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="text-center m-3">
+                      <button
+                        class="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#agregarEquipo"
+                      >
+                        <i
+                          class="fa-solid fa-circle-plus m-2"
+                          style="color: #ffffff; font-size: medium"
+                        ></i
+                        >Agregar equipo
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="modal fade"
+            id="agregarEquipo"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content rounded-0">
+                <div class="modal-header bg-azul rounded-0 text-white">
+                  <h1 class="modal-title fs-5 text-white">Agregar arbitro</h1>
+                  <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form action="" class="p-">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="mb-3">
+                          <label class="form-label">Equipos:</label>
+                          <select
+                            class="form-select"
+                            aria-label="Default select example"
+                          >
+                            <option selected>Selecciona equipo</option>
+                            <option value="1">Los motas</option>
+                            <option value="2">Los bellakos</option>
+                            <option value="3">Trikitrakatelas</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-3 text-md-end">
+                      <button
+                        type="button"
+                        class="btn btn-danger rounded-0"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancelar
+                      </button>
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        href="reglas.html"
+                      >
+                        Agregar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-6 text-start">
+                <p class="mb-0">
+                  <a class="text-muted" href="" target="_blank"
+                    ><strong>SPORTSYNC</strong></a
+                  >
+                  &copy;
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="~/js/app.js"></script>
+  </body>
+</html>
