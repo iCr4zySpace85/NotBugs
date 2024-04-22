@@ -155,11 +155,16 @@ namespace CrafterCodes.Controllers
                                         // Redirección basada en el rol del usuario
                                         switch (perfilNombre.ToString())  // Asumiendo que el nombre del rol es un string significativo
                                         {
+                                            case "Admin":
+                                                return RedirectToAction("Index", "Arbitro"); 
                                             case "Organizador":
                                                 return RedirectToAction("Index", "Organizador");
-
                                             case "Coach":
-                                                return RedirectToAction("Index", "Coach");    
+                                                return RedirectToAction("Index", "Coach"); 
+                                            case "Contador":
+                                                return RedirectToAction("Index", "Contador"); 
+                                            case "Arbitro":
+                                                return RedirectToAction("Index", "Arbitro"); 
                                             default:
                                                 return RedirectToAction("Index", "Home");
                                         }

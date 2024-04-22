@@ -1,0 +1,256 @@
+@{
+    ViewData["Title"] = "SportSyncSoftware Organizador";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>SportSyncSoftware Organizador Torneos</title>
+
+    <link href="~/css/app.css" rel="stylesheet" />
+    <link href="~/css/sidebar.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <div class="text-center bg-blue sidebar-brand">
+            <div class="text-center">
+              <div class="text-center">
+                <img
+                  src="~/img/logo-sportsync.png"
+                  class="img-fluid"
+                  width="180"
+                />
+              </div>
+            </div>
+          </div>
+
+          <ul class="sidebar-nav">
+            <li class="sidebar-header">Paginas</li>
+
+            <li class="sidebar-item active">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="Index">
+                <i class="align-middle" data-feather="sliders"></i>
+                <span class="align-middle">Torneos</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="coaches">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Coaches</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="arbitros">
+                <i class="align-middle" data-feather="user-check"></i>
+                <span class="align-middle">Arbitros</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="equipos">
+                <i class="align-middle" data-feather="users"></i>
+                <span class="align-middle">Equipos</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="contabilidad">
+                <i class="align-middle" data-feather="dollar-sign"></i>
+                <span class="align-middle">Contabilidad</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="noticias">
+                <i class="align-middle" data-feather="book"></i>
+                <span class="align-middle">Noticias</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="~/img/user-perfil.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                </a>
+
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="~/img/user-perfil.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                 @if (User.Identity.IsAuthenticated != null)
+                  {
+                    <span class="text-dark">@User.Identity.Name</span>
+                  }
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <div class="dropdown-divider"></div>
+
+                  <a asp-action="CerrarSesion" asp-controller="Home" class="dropdown-item text-danger">
+                    <i  class="align-middle me-1" data-feather="log-out"></i
+                    >Cerrar sesión</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="content">
+          <div class="container-fluid p-0">
+            <div class="d-flex justify-content-between align-items-center">
+              <h3 class="fw-bold">Torneos actuales</h3>
+              <div class="d-flex nav-card">
+                <a href="#" class="me-3 card-link"
+                  >Futbol <i class="fa-solid fa-futbol"></i
+                ></a>
+                <a href="#" class="me-3 card-link"
+                  >Basketball <i class="fa-solid fa-basketball"></i
+                ></a>
+                <a href="#" class="me-3 card-link"
+                  >Volleyball <i class="fa-solid fa-volleyball"></i
+                ></a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="input-group flex-nowrap form-search">
+                      <span class="input-group-text" id="addon-wrapping"
+                        ><i class="fa-solid fa-magnifying-glass"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control form-xx"
+                        placeholder="Buscar torneo"
+                      />
+                    </div>
+                  </div>
+                  <div class="card-body align-self-center">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div
+                          class="card mb-3 shadown-card"
+                          style="max-width: 540px"
+                        >
+                          <div class="row g-0">
+                            <div class="col-md-5 p-2">
+                              <img
+                                src="~/img/torneos/torneo1.jpeg"
+                                class="img-fluid img-torneos"
+                                alt="..."
+                              />
+                            </div>
+                            <div class="col-md-7">
+                              <div class="card-body">
+                                <h5 class="card-title">Nombre torneo</h5>
+                                <p>Deporte:</p>
+                                <p>Categoria:</p>
+                                <p>Temporada:</p>
+
+                                <a
+                                  type="button"
+                                  class="btn btn-primary btn-sm"
+                                  asp-controller="Organizador" asp-action="gestionarTorneo"
+                                >
+                                  Gestionar
+                                </a>
+                                <button
+                                  type="button"
+                                  class="btn btn-danger btn-sm"
+                                >
+                                  Eliminar
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="button-floating p-4">
+              <a class="btn btn-primary" asp-controller="Organizador" asp-action="crearTorneo">
+                <i
+                  class="fa-solid fa-circle-plus m-2"
+                  style="color: #ffffff; font-size: medium"
+                ></i
+                >Nuevo torneo
+              </a>
+            </div>
+        </main>
+
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-6 text-start">
+                <p class="mb-0">
+                  <a class="text-muted" href="" target="_blank"
+                    ><strong>SPORTSYNC</strong></a
+                  >
+                  &copy;
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="~/js/app.js"></script>
+  </body>
+</html>
