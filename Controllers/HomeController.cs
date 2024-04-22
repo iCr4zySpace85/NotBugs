@@ -28,6 +28,21 @@ namespace CrafterCodes.Controllers
             _logger = logger;
             _contexto = contexto;
         }
+        
+        public IActionResult InicioPrincipal()
+        {
+            return View();
+        }
+        
+        public IActionResult DatosTorneo()
+        {
+            return View();
+        }
+        
+        public IActionResult DatosEquipo()
+        {
+            return View();
+        }
 
 
         /*[HttpPost]

@@ -1,5 +1,9 @@
 @{
-    ViewData["Title"] = "SportSync  Organizador";
+    ViewData["Title"] = "SportSyncSoftware Organizador";
+}
+
+@{
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -12,7 +16,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <title>Torneos | SportSync</title>
+    <title>SportSyncSoftware Organizador Torneos</title>
 
     <link href="~/css/app.css" rel="stylesheet" />
     <link href="~/css/sidebar.css" rel="stylesheet" />
@@ -49,42 +53,42 @@
             <li class="sidebar-header">Paginas</li>
 
             <li class="sidebar-item active">
-              <a class="sidebar-link" href="index.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="Index">
                 <i class="align-middle" data-feather="sliders"></i>
                 <span class="align-middle">Torneos</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="coaches.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="coaches">
                 <i class="align-middle" data-feather="user"></i>
                 <span class="align-middle">Coaches</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="arbitros.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="arbitros">
                 <i class="align-middle" data-feather="user-check"></i>
                 <span class="align-middle">Arbitros</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="equipos.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="equipos">
                 <i class="align-middle" data-feather="users"></i>
                 <span class="align-middle">Equipos</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="contabilidad.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="contabilidad">
                 <i class="align-middle" data-feather="dollar-sign"></i>
                 <span class="align-middle">Contabilidad</span>
               </a>
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="noticias.html">
+              <a class="sidebar-link" asp-controller="Organizador" asp-action="noticias">
                 <i class="align-middle" data-feather="book"></i>
                 <span class="align-middle">Noticias</span>
               </a>
@@ -124,10 +128,10 @@
                     class="avatar img-fluid rounded me-1"
                     alt="Charles Hall"
                   />
-                @if (User.Identity.IsAuthenticated && TempData["NombreUsuario"] != null)
-                {
-                  <span class="text-dark">@TempData["NombreUsuario"].ToString()</span>
-                }
+                 @if (User.Identity.IsAuthenticated != null)
+                  {
+                    <span class="text-dark">@User.Identity.Name</span>
+                  }
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <div class="dropdown-divider"></div>
@@ -144,7 +148,7 @@
         <main class="content">
           <div class="container-fluid p-0">
             <div class="d-flex justify-content-between align-items-center">
-              <h3 class="fw-bold">Torneos</h3>
+              <h3 class="fw-bold">Torneos actuales</h3>
               <div class="d-flex nav-card">
                 <a href="#" class="me-3 card-link"
                   >Futbol <i class="fa-solid fa-futbol"></i
@@ -180,26 +184,27 @@
                           style="max-width: 540px"
                         >
                           <div class="row g-0">
-                            <div class="col-md-4">
+                            <div class="col-md-5 p-2">
                               <img
-                                src="..."
-                                class="img-fluid rounded-start"
+                                src="~/img/torneos/torneo1.jpeg"
+                                class="img-fluid img-torneos"
                                 alt="..."
                               />
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-7">
                               <div class="card-body">
                                 <h5 class="card-title">Nombre torneo</h5>
                                 <p>Deporte:</p>
                                 <p>Categoria:</p>
                                 <p>Temporada:</p>
 
-                                <button
+                                <a
                                   type="button"
                                   class="btn btn-primary btn-sm"
+                                  asp-controller="Organizador" asp-action="gestionarTorneo"
                                 >
                                   Gestionar
-                                </button>
+                                </a>
                                 <button
                                   type="button"
                                   class="btn btn-danger btn-sm"
@@ -211,49 +216,22 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div
-                          class="card mb-3 shadown-card"
-                          style="max-width: 540px"
-                        >
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img
-                                src="..."
-                                class="img-fluid rounded-start"
-                                alt="..."
-                              />
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">Nombre torneo</h5>
-                                <p>Deporte:</p>
-                                <p>Categoria:</p>
-                                <p>Temporada:</p>
-
-                                <button
-                                  type="button"
-                                  class="btn btn-primary btn-sm"
-                                >
-                                  Gestionar
-                                </button>
-                                <button
-                                  type="button"
-                                  class="btn btn-danger btn-sm"
-                                >
-                                  Eliminar
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+            <div class="button-floating p-4">
+              <a class="btn btn-primary" asp-controller="Organizador" asp-action="crearTorneo">
+                <i
+                  class="fa-solid fa-circle-plus m-2"
+                  style="color: #ffffff; font-size: medium"
+                ></i
+                >Nuevo torneo
+              </a>
+            </div>
         </main>
 
         <footer class="footer">

@@ -33,5 +33,56 @@ namespace CrafterCodes.Controllers
         {
             return View();
         }
+        
+        public IActionResult agregarEquipos()
+        {
+           return View("~/Views/Organizador/torneos/agregarEquipos.cshtml");
+        }
+        
+        public IActionResult gestionar()
+        {
+            return View("~/Views/Organizador/torneos/gestionar.cshtml");
+        }
+        
+        public IActionResult gestionarTorneo()
+        {
+            return View("~/Views/Organizador/torneos/gestionarTorneo.cshtml");
+        }
+        
+        public IActionResult crearTorneo()
+        {
+            // Suponiendo que la vista está directamente bajo la carpeta Views
+            return View("~/Views/Organizador/torneos/crearTorneo.cshtml");
+        }
+        
+        public IActionResult reglas()
+        {
+            return View("~/Views/Organizador/torneos/reglas.cshtml");
+        }
+        
+        public IActionResult coaches()
+        {
+            return View();
+        }
+        
+        public IActionResult arbitros()
+        {
+            return View();
+        }
+        
+        public IActionResult contabilidad()
+        {
+            return View();
+        }
+        
+        public IActionResult equipos()
+        {
+            return View();
+        }
+        
+        public IActionResult noticias()
+        {
+            return View();
+        }
     }
 }

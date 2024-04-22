@@ -1,0 +1,105 @@
+@{
+    ViewData["Title"] = "SportSync InfoTorneo";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportSync InfoTorneo 1</title>
+    <link rel="stylesheet" href="~/css/torneos.css" />
+    <link rel="stylesheet" href="~/css/normalize.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">
+          <img src="img/logo.PNG" alt="Logo" />
+        </a>
+      </div>
+
+      <button class="menu-btn">&#9776;</button>
+
+      <div class="menu" id="menu">
+        <a href="#">Inicio</a>
+        <a href="#">Futbol</a>
+        <a href="#">Basquetball</a>
+        <a href="#">Volleyball</a>
+      </div>
+    </nav>
+    
+    <div class="contenedor-principal">
+      <h1 class="titulo">Nombre del Torneo</h1>
+      <div class="radio-inputs">
+        <label class="radio">
+          <input type="radio" name="radio" checked="" id="equiposRadio">
+          <span class="name">Equipos</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="radio" id="partidosRadio">
+          <span class="name">Partidos</span>
+        </label>
+      </div>
+    </div>
+  <hr>
+    <div id="equiposContent" class="contenido contenido-activo">
+      
+    <!--  Conmtenedor 1 -->
+    <div class="contenedor-80">
+      <div class="barra-busqueda">
+        <input type="text" placeholder="Buscar...">
+      </div>
+      <div class="contenedor-cards">
+        <!-- Card 1 -->
+        <div class="card">
+          <img style="width: 100%;" src="~/img/img3.jpeg" alt="Imagen">
+          <div class="card-info">
+            <h3 class="card-title">Título Card 1</h3>
+            <p class="card-text">Descripción breve del contenido del card.</p>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+
+     <!-- CONTENEDOR 2 -->
+
+    <div class="contenedor-20">
+    
+      <div class="noticia">
+        <div class="imagen-noticia">
+          <img src="~/img/img4.jpeg" alt="Imagen de la noticia" />
+        </div>
+        <div class="contenido-noticia">
+          <h3>Título de la Noticia</h3>
+          <p>Descripción corta de la noticia...</p>
+          <a href="#" class="btn-mas-informacion">Más Información</a>
+        </div>
+      </div>
+      
+    </div>
+
+    </div>
+    
+    <div id="partidosContent" class="contenido">
+      <p>Contenido de Partidos: Esta sección puede contener información sobre los partidos próximos, resultados anteriores, estadísticas, etc.</p>
+    </div>
+
+<script>
+  document.getElementById('equiposRadio').addEventListener('change', function() {
+    document.getElementById('equiposContent').classList.add('contenido-activo');
+    document.getElementById('partidosContent').classList.remove('contenido-activo');
+  });
+
+  document.getElementById('partidosRadio').addEventListener('change', function() {
+    document.getElementById('partidosContent').classList.add('contenido-activo');
+    document.getElementById('equiposContent').classList.remove('contenido-activo');
+  });
+</script>
+  </body>
+</html>
