@@ -1,85 +1,185 @@
 @* Modelo declarado aquí *@
-    @model CrafterCodes.Models.ViewModels.PageInfoViewModel
+@model CrafterCodes.Models.ViewModels.PageInfoViewModel
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contenedores Flexibles</title>
-    <link rel="stylesheet" href="~/css/index.css" />
-    <link rel="stylesheet" href="~/css/normalize.css" />
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="#">
-          <img src="~/img/logo.PNG" alt="Logo" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contenedores Flexibles</title>
+  <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/head.css" />
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+
+<body>
+  <header class="inicio-img">
+    <div class="navh">
+      <div class="container__menu">
+        <div class="logo">
+          <a href="index.html" class="enlace">
+            <img src="~/img/logo-sportsync.png" alt="logo" />
+          </a>
+        </div>
+
+        <div class="menu">
+          <i class="fa-solid fa-bars" id="btn_menu"></i>
+          <div id="back_menu"></div>
+          <nav id="nav">
+            <button class="responsive-button" id="close-button">
+              <i class="fa-solid fa-xmark" style="color: #000000"></i>
+            </button>
+            <div class="logorespos">
+              <img src="img/logo-sportsync.png" alt="logo" />
+            </div>
+
+            <ul class="fonnav">
+              <li>
+                <a class="text-link" href="index.html" id="selected">Inicio</a>
+              </li>
+              <li>
+                <a class="text-link" href="futbol.hmtl">FUTBOL</a>
+              </li>
+              <li>
+                <a class="text-link" href="basquet.html">BASQUEBALL</a>
+              </li>
+              <li>
+                <a class="text-link" href="volleybal.html">VOLLEYBALL</a>
+              </li>
+              <li>
+                <a class="sign-in" href="">SIGN IN</a>
+              </li>
+            </ul>
+            <ul></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="p-5">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 p-3">
+          <div class="shadow-lg bg-body rounded p-4">
+            <div class="input-group p-4">
+              <i class="input-group-text rounded-0 fa-solid fa-magnifying-glass"></i>
+              <input type="text" class="form-control rounded-0" placeholder="Buscar torneo" />
+            </div>
+            <!-- Cards fila -->
+
+            <div class="row">
+              @foreach (var torneo in Model.Torneos)
+              {
+
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body card-contenido">
+                      <img src="@Url.Content(torneo.IMG_torneo)" alt="Imagen del torneo" />
+                      <div>
+                        <p class="card-text fs-6">
+                          <strong>Nombre del torneo: @torneo.Nombre</strong><br />
+                          <span>Deporte: @torneo.Deporte.Nombre</span>
+                          <span>Categoria: @torneo.Categoria</span>
+                          <span>Temporada: @torneo.Fecha_inicio.Year.ToString()</span>
+                        </p>
+                        <a href="@Url.Action("Torneos", "Pageinfo", new { id = torneo.ID_torneo })"
+                          class="btn btn-outline-primary">Más información</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              }
+            </div>
+
+
+          </div>
+        </div>
+        <!-- Columa de noticias -->
+        <div class="col-md-4 p-3">
+          <!-- cards -->
+
+          @foreach (var noticia in Model.Noticias)
+          {
+            <div class="container-fluid p-3 border border-dark mb-3">
+              <div class="card rounded-0">
+                <div class="ratio ratio-16x9">
+                  <iframe src="https://www.youtube.com/embed/DgdD5rUozew?si=O1REZp9SKbyK84uh" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">
+                    @noticia.Contenido
+                  </p>
+                </div>
+              </div>
+            </div>
+          }
+          
+          <!--fin cards -->
+          
+        </div>
+        <!-- fin Columa de noticias -->
+      </div>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <section class="d-flex justify-content-center justify-content-lg-center p-4 border-bottom">
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
         </a>
       </div>
+      <!-- Right -->
+    </section>
 
-      <button class="menu-btn">&#9776;</button>
-
-      <div class="menu" id="menu">
-        <a href="#">Inicio</a>
-        <a href="#">Futbol</a>
-        <a href="#">Basquetball</a>
-        <a href="#">Volleyball</a>
-      </div>
-    </nav>
-    
-    <!--  Conmtenedor 1 -->
-    
-
-  <div class="contenedor-80">
-    <div class="contenedor-tarjetas">
-      @foreach (var torneo in Model.Torneos)
-      {
-        <div class="tarjeta">
-          <div class="imagen">
-            <img src="@Url.Content(torneo.IMG_torneo)" alt="Imagen del torneo" />
-          </div>
-          <div class="informacion">
-            <p>Nombre del torneo: <input type="text" placeholder="Nombre del torneo" value="@torneo.Nombre" readonly />
-            </p>
-            <p>Deporte: <input type="text" placeholder="Deporte" value="@torneo.Deporte.Nombre" readonly /></p>
-            <p>Categoría: <input type="text" placeholder="Categoría" value="@torneo.Categoria" readonly /></p>
-            <p>Temporada: <input type="text" placeholder="Temporada" value="@torneo.Fecha_inicio.Year.ToString()"
-                readonly /></p>
-            <a href="@Url.Action("Torneos", "Pageinfo", new { id = torneo.ID_torneo })" class="btn-mas-informacion">Más
-              Información</a>
-          </div>
-        </div>
-      }
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+      © 2024:
+      <a class="text-reset fw-bold" href="">SPORTSYNC</a>
     </div>
-  </div>
-
-     <!-- CONTENEDOR 2 -->
-
-    <div class="contenedor-20">
-    @foreach (var noticia in Model.Noticias)
-    {
-        <div class="noticia">
-            <div class="imagen-noticia">
-                <img src="~/img/img4.jpeg" alt="Imagen de la noticia" />
-            </div>
-            <div class="contenido-noticia">
-                <h3>@noticia.Titulo</h3>
-                <p>@noticia.Contenido</p>
-                <a href="@Url.Action("DetalleNoticia", new { id = noticia.ID_noticia })" class="btn-mas-informacion">Más Información</a>
-            </div>
-        </div>
-    }
-</div>
+  </footer>
+  <!-- Footer -->
+  <script src="~/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/script.js"></script>
 
 
-    <script>
-      const menuBtn = document.querySelector(".menu-btn");
-      const menu = document.getElementById("menu");
+  <script>
+    const menuBtn = document.querySelector(".menu-btn");
+    const menu = document.getElementById("menu");
 
-      menuBtn.addEventListener("click", function () {
-        const isMenuVisible = menu.style.display === "block";
-        menu.style.display = isMenuVisible ? "none" : "block";
-      });
-    </script>
-  </body>
+    menuBtn.addEventListener("click", function () {
+      const isMenuVisible = menu.style.display === "block";
+      menu.style.display = isMenuVisible ? "none" : "block";
+    });
+  </script>
+</body>
+
 </html>

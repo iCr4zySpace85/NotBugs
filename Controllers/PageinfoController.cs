@@ -51,12 +51,13 @@ namespace CrafterCodes.Controllers
         }
         public async Task<IActionResult> Torneos(int id)
         {
-            
+            var torneo = await GetTorneos(); 
            var equipos = await GetEquipos(id);
            var noticias = await GetNoticiasTorneo(id);
 
            var viewModel = new PageInfoViewModel
             {
+                Torneos = torneo,
                 Equipo = equipos,
                 Noticias = noticias
             };
